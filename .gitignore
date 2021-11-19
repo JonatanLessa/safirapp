@@ -1,4 +1,5 @@
 node_modules/
+garbage/
 .expo/
 dist/
 npm-debug.*
