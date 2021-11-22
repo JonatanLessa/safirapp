@@ -2,7 +2,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from './src/pages/LoginScreen';
-import HomeScreen from './src/pages/HomeScreen';
+import RegistryScreen from './src/pages/RegistryScreen';
+import ShowScreen from './src/pages/ShowScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,11 +19,17 @@ export default function App() {
           headerTintColor: "#f92e62"
         }}></Stack.Screen>    
         <Stack.Screen 
-        name="HomeScreen" 
-        component={HomeScreen}
+        name="RegistryScreen" 
+        component={RegistryScreen}
         options={{
           headerTintColor: "#f92e62"
         }}></Stack.Screen>      
+        <Stack.Screen 
+        name="ShowScreen" 
+        component={ShowScreen}
+        options={{
+          headerTintColor: "#f92e62"
+        }}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   )  

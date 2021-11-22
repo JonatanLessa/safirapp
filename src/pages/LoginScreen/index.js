@@ -13,8 +13,11 @@ export default function LoginScreen(){
         <SafeAreaView style={styles.container}>
             <StatusBar backgroundColor="#171d31" barStyle="light-content"/> 
             <View style={styles.container}>
-                <Text style={styles.textTitle}>FAZENDA PARAISO</Text>
-                <Button title= "INICIO" onPress={()=>{navigation.navigate('HomeScreen')}}></Button>   
+                <Text style={styles.textTitle}>REGISTRO DE PONTO</Text>
+                <Button title= "IR PARA O REGISTRO DE PONTO" onPress={()=>{navigation.navigate('RegistryScreen')}}></Button>   
+            </View>   
+            <View style={styles.container}>
+                <Button title= "CONSULTAR REGISTRO" onPress={()=>{navigation.navigate('ShowScreen')}}></Button>   
             </View>   
         </SafeAreaView>
     );  

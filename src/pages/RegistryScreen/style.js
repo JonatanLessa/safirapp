@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       fontSize: 40,
       justifyContent: 'center'
+    },
+    buttonBack:{
+      backgroundColor: '#deb887',
+      padding: 6,
+      borderRadius: 10,
     } 
   });
 

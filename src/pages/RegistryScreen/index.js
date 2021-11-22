@@ -2,11 +2,12 @@ import React from "react";
 import { Text, View, Button, SafeAreaView } from "react-native";
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
-import ButtonRegistryHour from "../RegistraHoras";
+import ButtonEntry from "../../Components/buttonEntry";
+import ButtonExit from "../../Components/butonExit";
 import styles from "./style";
 
 
-export default function HomeScreen() {
+export default function RegistryScreen() {
 
     const navigation = useNavigation();
   
@@ -21,12 +22,14 @@ export default function HomeScreen() {
         <View style={styles.container}>
           <Text>{greetings()}</Text>
           <Text>REGISTRE AQUI SEUS HORÁRIOS</Text>
-          <ButtonRegistryHour></ButtonRegistryHour>
+          <ButtonEntry></ButtonEntry>
+          <ButtonExit></ButtonExit>  
         </View>
-        <View style={styles.container}>
+        <View style={styles.buttonBack}>
           <Button title= "VOLTAR " onPress={()=>{navigation.navigate('LoginScreen')}}></Button>
         </View>
         <StatusBar style="auto" /> 
       </SafeAreaView>      
       );
   }
+  

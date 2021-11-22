@@ -82,3 +82,28 @@ export default function LoginScreen(){
       </SafeAreaView>
   );  
 }*/
+/*
+const ButtonRegistryHour = ()=> {
+
+    const [entryTime, setEntryTime] =  useState(0);
+    const [exitTime, setExitTime] = useState(0);
+   //Dois exemplos de uso de button, Button e TouchableOpacity
+   //<TouchableOpacity style={styles.buttonStyle} onPress={()=>{setEntryTime(new Date().toLocaleString())}}>
+    return (
+        <View style={styles.viewCheck}>            
+            <View style={styles.buttonCheck}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={()=>{setEntryTime(moment().format('DD-MM-YYYY hh:mm:ss a'))}}>
+                    <Text> HORÁRIO INICIAL </Text>
+                </TouchableOpacity>
+                <Text style={styles.textCheck}>{entryTime}</Text>
+                <RegistryHour></RegistryHour>
+            </View>
+            <View style={styles.buttonCheck}>
+                <Button style={styles.button} title="HORÁRIO FINAL" onPress={()=>{setExitTime(new Date().toLocaleString())}}></Button>
+                <Text style={styles.textCheck}>{exitTime}</Text>
+            </View>         
+            <StatusBar style= "auto" />
+        </View>
+    );
+}
+*/
