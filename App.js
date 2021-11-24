@@ -16,19 +16,19 @@ export default function App() {
         name="LoginScreen" 
         component={LoginScreen}
         options={{
-          headerTintColor: "#f92e62"
+          headerTintColor: "#000"
         }}></Stack.Screen>    
         <Stack.Screen 
         name="RegistryScreen" 
         component={RegistryScreen}
         options={{
-          headerTintColor: "#f92e62"
+          headerTintColor: "#000"
         }}></Stack.Screen>      
         <Stack.Screen 
         name="ShowScreen" 
         component={ShowScreen}
         options={{
-          headerTintColor: "#f92e62"
+          headerTintColor: "#000"
         }}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,23 +1,27 @@
 import { StyleSheet } from "react-native";
 
-
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#ffe4c4',
+      marginTop: 50,
+      backgroundColor: '#fff',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
     },
     textTitle: {
       fontWeight: 'bold',
-      fontSize: 40,
+      fontSize: 25,
+      justifyContent: 'center'
+    },
+    text0: {
+      fontWeight: 'bold',
+      fontSize: 15,
       justifyContent: 'center'
     },
     buttonBack:{
-      backgroundColor: '#deb887',
       padding: 6,
       borderRadius: 10,
-    } 
+  }
   });
 
-  export default styles;
+export default styles;

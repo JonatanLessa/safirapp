@@ -20,7 +20,7 @@ const ButtonExit = () => {
                 style={styles.buttonStyle} 
                 onPress={()=>{setExitTime(moment().format('DD-MM-YYYY hh:mm:ss a'));
                 {StoreExit(moment().format('DD-MM-YYYY').toString(), moment().format('hh:mm:ss a').toString())}}}>                         
-                    <Text> HORÁRIO FINAL </Text>
+                    <Text style={{textAlign:'center', marginTop: 15}}> HORÁRIO FINAL </Text>
                 </TouchableOpacity>
                 <Text style={styles.textCheck}>{exitTime}</Text>                             
             </View>               

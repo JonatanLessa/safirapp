@@ -26,7 +26,7 @@ const ButtonSearchExit = () => {
                 <TouchableOpacity
                     style={styles.buttonStyle}
                     onPress={()=>{SearchExit(date)}}>               
-                    <Text> BUSCAR HORÁRIO DE ENTRADA PARA {date}</Text>                    
+                    <Text style={{textAlign:'center', marginTop:15}}>BUSCAR HORÁRIO DE ENTRADA PARA</Text>                    
                 </TouchableOpacity> 
                 <Text style={styles.textCheck}>{exitInfo}</Text>
             </View>                     
