@@ -20,7 +20,7 @@ const ButtonEntry = () => {
                 style={styles.buttonStyle} 
                 onPress={()=>{setEntryTime(moment().format('DD-MM-YYYY hh:mm:ss a'));
                 {StoreEntry(moment().format('DD-MM-YYYY').toString(), moment().format('hh:mm:ss a').toString())}}}>                         
-                    <Text> HORÁRIO INICIAL </Text>
+                    <Text style={{textAlign:'center', marginTop: 15}}> HORÁRIO INICIAL </Text>
                 </TouchableOpacity>
                 <Text style={styles.textCheck}>{entryTime}</Text>                             
             </View>               
