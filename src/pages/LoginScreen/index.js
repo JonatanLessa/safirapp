@@ -17,7 +17,7 @@ export default function LoginScreen(){
                 <Button title= "IR PARA O REGISTRO DE PONTO" onPress={()=>{navigation.navigate('RegistryScreen')}}></Button>   
             </View>   
             <View style={styles.container}>
-                <Button title= "CONSULTAR REGISTRO" onPress={()=>{navigation.navigate('ShowScreen')}}></Button>   
+                <Button title= "CONSULTAR REGISTRO DE PONTO" onPress={()=>{navigation.navigate('ShowScreen')}}></Button>   
             </View>   
         </SafeAreaView>
     );  
