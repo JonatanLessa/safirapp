@@ -9,7 +9,8 @@ const styleButton = StyleSheet.create({
         borderColor: '#000',
         width: 300,
         margin: 10,
-        marginTop: 20
+        marginTop: 20,
+        color: '#8CDB94'
     },
     buttonBack: {
         backgroundColor: '#888888',
