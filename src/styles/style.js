@@ -3,12 +3,13 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      marginTop: 50,
+      paddingTop: 70,
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'flex-start',
     },
     textTitle: {
+      color: '#4d4d4d',
       fontWeight: 'bold',
       fontSize: 25,
       justifyContent: 'center'

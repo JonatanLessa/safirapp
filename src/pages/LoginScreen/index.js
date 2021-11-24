@@ -1,7 +1,6 @@
 import React from "react";
 import { Text, View, SafeAreaView, Image } from "react-native";
 import { Button } from "react-native-elements/dist/buttons/Button";
-import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
 
 import styles from "../../styles/style";
@@ -12,10 +11,10 @@ import appLogo from "../../../assets/safir-mobile2.png"
 
 export default function LoginScreen(){
     const navigation = useNavigation();
+    navigation.setOptions({title: "Safir - Registro de Ponto"});
             
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar backgroundColor="#171d31" barStyle="light-content"/> 
             <View style={styles.container}>
                 <Image
                     source={appLogo}
