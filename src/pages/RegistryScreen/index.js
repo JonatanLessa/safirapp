@@ -2,15 +2,17 @@ import React from "react";
 import { Text, View, SafeAreaView } from "react-native";
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
+import { Button } from "react-native-elements/dist/buttons/Button";
+
 import ButtonEntry from "../../Components/buttonEntry";
 import ButtonExit from "../../Components/butonExit";
+
 import styles from "../../styles/style";
-import { Button } from "react-native-elements/dist/buttons/Button";
 import bs from "../../styles/button"
 
 export default function RegistryScreen() {
-
     const navigation = useNavigation();
+    navigation.setOptions({title: "Registrar Ponto"});
   
     const greetings = () => {
       return `Olá ${'Marcelo'}!`;
@@ -31,6 +33,5 @@ export default function RegistryScreen() {
         />
         <StatusBar style="auto" /> 
       </SafeAreaView>      
-      );
-  }
-  
+    );
+}

@@ -1,15 +1,17 @@
 import React from "react";
 import { View, Text, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import styles from "../../styles/styleShowScreen";
+import { Button } from "react-native-elements/dist/buttons/Button";
+
 import ButtonSearchEntry from "../../Components/buttonSearchEntry";
 import ButtonSearchExit from "../../Components/buttonSearchExit";
-import { Button } from "react-native-elements/dist/buttons/Button";
+
+import styles from "../../styles/styleShowScreen";
 import bs from "../../styles/button";
 
 export default function ShowScreen () {
-
     const navigation = useNavigation();
+    navigation.setOptions({title: "Consultar Registro"});
     
     return (
         <SafeAreaView style={styles.container}>
