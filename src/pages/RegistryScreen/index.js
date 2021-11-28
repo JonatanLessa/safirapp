@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
-
-import ButtonEntry from '../../Components/buttonEntry';
-import ButtonExit from '../../Components/butonExit';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import moment from 'moment';
 
 import styles from '../../styles/style';
 import bs from '../../styles/button';
+
+import ButtonRegister from '../../Components/ButtonRegister';
 
 export default function RegistryScreen() {
   const navigation = useNavigation();
@@ -17,14 +18,47 @@ export default function RegistryScreen() {
   const greetings = () => {
     return `Olá ${'Marcelo'}!`;
   };
+ 
+  const [entryTime, setEntryTime] = useState(0); 
+  const [exitTime, setExitTime] = useState(0); 
+  
+  const StoreEntry = (key, value) => {
+    AsyncStorage.setItem(key, value);
+  };
+
+  const StoreExit = (key, value) => {
+    AsyncStorage.setItem(key, value);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
         <Text>{greetings()}</Text>
         <Text>Registre aqui os seus horários:</Text>
-        <ButtonEntry />
-        <ButtonExit />
+       <ButtonRegister
+          title={"HORÁRIO INICIAL"}
+          value={entryTime}
+          onPress={() => {setEntryTime(moment().format('DD-MM-YYYY hh:mm:ss a'));
+            {
+              StoreEntry(
+                `ENTRY-${moment().format('DD-MM-YYYY').toString()}`,
+                moment().format('hh:mm:ss a').toString(),
+              );
+            }                
+          }}            
+        />                 
+        <ButtonRegister
+          title={"HORÁRIO FINAL"}
+          value={exitTime}
+          onPress={() => {setExitTime(moment().format('DD-MM-YYYY hh:mm:ss a'));
+            {
+              StoreExit(
+                `EXIT-${moment().format('DD-MM-YYYY').toString()}`,
+                moment().format('hh:mm:ss a').toString(),
+              );
+            }                
+          }}           
+        />
       </View>
       <Button
         buttonStyle={bs.buttonBack}
@@ -33,7 +67,7 @@ export default function RegistryScreen() {
           navigation.navigate('LoginScreen');
         }}
       />
-      <StatusBar style="auto" />
+      <StatusBar style="auto" />      
     </SafeAreaView>
   );
 }
