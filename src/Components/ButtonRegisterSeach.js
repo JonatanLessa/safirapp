@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 
 
-export default function ButtonRegister(props)  {
+export default function ButtonRegisterSearch(props)  {
  
   return (
     <View style={styles.viewCheck}>

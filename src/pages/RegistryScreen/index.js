@@ -9,7 +9,7 @@ import moment from 'moment';
 import styles from '../../styles/style';
 import bs from '../../styles/button';
 
-import ButtonRegister from '../../Components/ButtonRegister';
+import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
 
 export default function RegistryScreen() {
   const navigation = useNavigation();
@@ -35,7 +35,7 @@ export default function RegistryScreen() {
       <View style={styles.container}>
         <Text>{greetings()}</Text>
         <Text>Registre aqui os seus horários:</Text>
-       <ButtonRegister
+       <ButtonRegisterSearch
           title={"HORÁRIO INICIAL"}
           value={entryTime}
           onPress={() => {setEntryTime(moment().format('DD-MM-YYYY hh:mm:ss a'));
@@ -47,7 +47,7 @@ export default function RegistryScreen() {
             }                
           }}            
         />                 
-        <ButtonRegister
+        <ButtonRegisterSearch
           title={"HORÁRIO FINAL"}
           value={exitTime}
           onPress={() => {setExitTime(moment().format('DD-MM-YYYY hh:mm:ss a'));

@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from '../../styles/styleShowScreen';
 import bs from '../../styles/button';
-import ButtonSearch from '../../Components/ButtonSearch';
+import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
 
 export default function ShowScreen() {
   const navigation = useNavigation();
@@ -39,7 +39,7 @@ export default function ShowScreen() {
             placeholder="ex. 01-01-2021"
             onChangeText={(key) => setDate(key)}
           />       
-        <ButtonSearch
+        <ButtonRegisterSearch
           title={"BUSCAR HORÁRIO DE ENTRADA PARA"}
           value={entryInfo}
           onPress={() => {
@@ -52,7 +52,7 @@ export default function ShowScreen() {
             placeholder="ex. 01-01-2021"
             onChangeText={(key) => setDate(key)}
           />       
-        <ButtonSearch
+        <ButtonRegisterSearch
           title={"BUSCAR HORÁRIO DE SAÍDA PARA"}
           value={exitInfo}
           onPress={() => {
