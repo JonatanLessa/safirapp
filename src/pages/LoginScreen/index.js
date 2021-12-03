@@ -11,7 +11,7 @@ import appLogo from '../../../assets/safir-mobile2.png';
 
 export default function LoginScreen() {
   const navigation = useNavigation();
-  navigation.setOptions({ title: 'Safir - Registro de Ponto' });
+  //navigation.setOptions({ title: 'Safir - Registro de Ponto' });
 
   return (
     <SafeAreaView style={styles.container}>

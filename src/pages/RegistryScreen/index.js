@@ -13,7 +13,7 @@ import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
 
 export default function RegistryScreen() {
   const navigation = useNavigation();
-  navigation.setOptions({ title: 'Registrar Ponto' });
+  //navigation.setOptions({ title: 'Registrar Ponto' });
 
   const greetings = () => {
     return `Olá ${'Marcelo'}!`;
