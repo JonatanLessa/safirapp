@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, SafeAreaView, TextInput, StyleSheet  } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
@@ -10,7 +10,10 @@ import ButtonDataPicker from '../../Components/ButtonDataPicker';
 
 export default function ShowScreen() {
   const navigation = useNavigation();
-  //navigation.setOptions({ title: 'Consultar Registro' });
+  
+  useEffect (()=> {
+    navigation.setOptions({ title: 'CONSULTAR PONTO' });
+  },[]);
 
   const [entryInfo, setEntryInfo] = useState(null);
   const [exitInfo, setExitInfo] = useState(null);
