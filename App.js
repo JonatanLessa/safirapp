@@ -13,6 +13,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="LoginScreen">
         <Stack.Screen 
+        
         name="LoginScreen" 
         component={LoginScreen}
         options={{

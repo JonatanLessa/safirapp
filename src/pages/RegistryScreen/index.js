@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
@@ -13,7 +13,10 @@ import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
 
 export default function RegistryScreen() {
   const navigation = useNavigation();
-  navigation.setOptions({ title: 'Registrar Ponto' });
+  
+  useEffect (()=> {
+    navigation.setOptions({ title: 'REGISTRAR PONTO' });
+  },[]);
 
   const greetings = () => {
     return `Olá ${'Marcelo'}!`;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, SafeAreaView, TextInput, StyleSheet  } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
@@ -6,11 +6,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from '../../styles/styleShowScreen';
 import bs from '../../styles/button';
-import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
+import ButtonDataPicker from '../../Components/ButtonDataPicker';
 
 export default function ShowScreen() {
   const navigation = useNavigation();
-  navigation.setOptions({ title: 'Consultar Registro' });
+  
+  useEffect (()=> {
+    navigation.setOptions({ title: 'CONSULTAR PONTO' });
+  },[]);
 
   const [entryInfo, setEntryInfo] = useState(null);
   const [exitInfo, setExitInfo] = useState(null);
@@ -32,30 +35,20 @@ export default function ShowScreen() {
       <View style={styles.viewCheck}>        
         <Text style={{ fontWeight: 'bold', margin: 10 }}>
           HORA DA ENTRADA/SAIDA
-        </Text>
-        <Text>Entre com a Data</Text>
-          <TextInput
-            style={styles2.input}
-            placeholder="ex. 01-01-2021"
-            onChangeText={(key) => setDate(key)}
-          />       
-        <ButtonRegisterSearch
-          title={"BUSCAR HORÁRIO DE ENTRADA PARA"}
+        </Text>        
+        <ButtonDataPicker
+          title={"SELECIONAR DATA DE ENTRADA"}
           value={entryInfo}
-          onPress={() => {
+          onDateSelect={(selectedDate) => {
+            setDate(selectedDate)
             SearchEntry(`ENTRY-${date}`);
           }}
-        />
-        <Text>Entre com a Data</Text>
-          <TextInput
-            style={styles2.input}
-            placeholder="ex. 01-01-2021"
-            onChangeText={(key) => setDate(key)}
-          />       
-        <ButtonRegisterSearch
-          title={"BUSCAR HORÁRIO DE SAÍDA PARA"}
+        />                
+        <ButtonDataPicker
+          title={"SELECIONAR DATA DE SAÍDA"}
           value={exitInfo}
-          onPress={() => {
+          onDateSelect={(selectedDate) => {
+            setDate(selectedDate)
             SearchExit(`EXIT-${date}`);
           }}
         />
@@ -84,3 +77,18 @@ const styles2 = StyleSheet.create({
     width: 280,
   },
 });
+/* 
+        <Text>Entre com a Data</Text>
+          <TextInput
+            style={styles2.input}
+            placeholder="ex. 01-01-2021"
+            onChangeText={(key) => setDate(key)}
+          />       
+        <ButtonRegisterSearch
+          title={"BUSCAR HORÁRIO DE SAÍDA PARA"}
+          value={exitInfo}
+          onPress={() => {
+            SearchExit(`EXIT-${date}`);
+          }}
+        />
+          */

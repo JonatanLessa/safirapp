@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View, SafeAreaView, Image } from 'react-native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import { useNavigation } from '@react-navigation/native';
@@ -11,7 +11,10 @@ import appLogo from '../../../assets/safir-mobile2.png';
 
 export default function LoginScreen() {
   const navigation = useNavigation();
-  navigation.setOptions({ title: 'Safir - Registro de Ponto' });
+
+  useEffect (()=> {
+    navigation.setOptions({ title: 'Safir - Registro de Ponto' });
+  },[]);
 
   return (
     <SafeAreaView style={styles.container}>
