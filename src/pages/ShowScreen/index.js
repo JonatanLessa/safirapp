@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, SafeAreaView, TextInput, StyleSheet  } from 'react-native';
+import { 
+  View, 
+  Text, 
+  SafeAreaView, 
+  StyleSheet,
+  } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import dataBase from '../../config/firebaseconfig';
+import { collection, getDocs } from "firebase/firestore";
 
 import styles from '../../styles/styleShowScreen';
 import bs from '../../styles/button';
@@ -10,11 +17,22 @@ import ButtonDataPicker from '../../Components/ButtonDataPicker';
 
 export default function ShowScreen() {
   const navigation = useNavigation();
+  const [users, setUsers] = useState([]);
+  const usersCollectionRef = collection(dataBase, "users");
   
   useEffect (()=> {
     navigation.setOptions({ title: 'CONSULTAR PONTO' });
   },[]);
+/*
+  useEffect (() => {
+    const getUsers = async () => {
+      const data = await getDocs(usersCollectionRef);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
 
+    getUsers();
+  }, []);
+*/
   const [entryInfo, setEntryInfo] = useState(null);
   const [exitInfo, setExitInfo] = useState(null);
 
@@ -32,10 +50,12 @@ export default function ShowScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.viewCheck}>        
+      <View style={styles.viewCheck}>     
+          
         <Text style={{ fontWeight: 'bold', margin: 10 }}>
           HORA DA ENTRADA/SAIDA
-        </Text>        
+        </Text> 
+               
         <ButtonDataPicker
           title={"SELECIONAR DATA DE ENTRADA"}
           value={entryInfo}
@@ -91,4 +111,12 @@ const styles2 = StyleSheet.create({
             SearchExit(`EXIT-${date}`);
           }}
         />
+
+
+        {users.map((user) => {
+          return (
+            <Text>Nome:{user.data}</Text>
+         )
+        })} 
+         
           */
