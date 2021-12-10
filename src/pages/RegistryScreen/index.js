@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import moment from 'moment';
-import { collection, addDoc, setDoc } from "@firebase/firestore";
 
 import database from '../../config/firebaseconfig';
 
@@ -16,9 +15,6 @@ import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
 
 export default function RegistryScreen() {
   const navigation = useNavigation();
-  const [newDate, setNewDate] = useState('');
-  const [newHour, setNewHours] = useState('');
-  const usersCollectionRef = collection(database, "users");
   const [campo, setCampo] = useState('');
   
   useEffect (()=> {
@@ -39,15 +35,12 @@ export default function RegistryScreen() {
   const StoreExit = (key, value) => {
     AsyncStorage.setItem(key, value);
   };
-/*
-  const createInfo = async (newHour) => {
-    await addDoc(usersCollectionRef, { campo: newHour });
-    //database.collection('users').addDoc(usersCollectionRef, { campo: newHour })
-  };*/
-  async function createInfo(teste, newHour) {
-    await addDoc(usersCollectionRef, { teste, newHour });
-    //database.collection('users').addDoc(usersCollectionRef, { campo: newHour })
-  }
+
+  function createInfo(description, newHour ) {    
+    database.collection('users').add({
+      description: newHour
+    })
+  };
 
   return (
     <SafeAreaView style={styles.container}>
