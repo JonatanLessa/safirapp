@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, SafeAreaView, TextInput, StyleSheet  } from 'react-native';
+import { 
+  View, 
+  Text, 
+  SafeAreaView, 
+  StyleSheet,
+  } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import database from '../../config/firebaseconfig';
 
 import styles from '../../styles/styleShowScreen';
 import bs from '../../styles/button';
 import ButtonDataPicker from '../../Components/ButtonDataPicker';
+import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
 
 export default function ShowScreen() {
   const navigation = useNavigation();
+  const [users, setUsers] = useState([]);
   
   useEffect (()=> {
     navigation.setOptions({ title: 'CONSULTAR PONTO' });
@@ -30,12 +38,26 @@ export default function ShowScreen() {
     setExitInfo(value);
   };
 
+  function getInfoEntry( id ) {    
+    setUsers(database.collection("users").doc(`ENTRY-${id}`).get())
+ };
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.viewCheck}>        
+      <View style={styles.viewCheck}>     
+          
         <Text style={{ fontWeight: 'bold', margin: 10 }}>
           HORA DA ENTRADA/SAIDA
-        </Text>        
+        </Text> 
+
+        <ButtonRegisterSearch
+          title={"HORÁRIO FINAL NOVO"}
+          value={users}
+          onPress={() => {            
+            getInfoEntry("09-12-2021")}                
+          } 
+              
+        /> 
         <ButtonDataPicker
           title={"SELECIONAR DATA DE ENTRADA"}
           value={entryInfo}
@@ -91,4 +113,12 @@ const styles2 = StyleSheet.create({
             SearchExit(`EXIT-${date}`);
           }}
         />
+
+
+        {users.map((user) => {
+          return (
+            <Text>Nome:{user.data}</Text>
+         )
+        })} 
+         
           */

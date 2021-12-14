@@ -6,6 +6,8 @@ import { Button } from 'react-native-elements/dist/buttons/Button';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import moment from 'moment';
 
+import database from '../../config/firebaseconfig';
+
 import styles from '../../styles/style';
 import bs from '../../styles/button';
 
@@ -13,10 +15,17 @@ import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
 
 export default function RegistryScreen() {
   const navigation = useNavigation();
+  const [id, setId] = useState('');
   
   useEffect (()=> {
     navigation.setOptions({ title: 'REGISTRAR PONTO' });
   },[]);
+
+  useEffect (()=> {
+    navigation.setOptions({ title: 'REGISTRAR PONTO' });
+  },[id]);
+
+
 
   const greetings = () => {
     return `Olá ${'Marcelo'}!`;
@@ -33,11 +42,39 @@ export default function RegistryScreen() {
     AsyncStorage.setItem(key, value);
   };
 
+  function createInfoEntry( newHour ) {    
+     database.collection("users").doc(`ENTRY-${id}`).set({[id]: newHour
+      //description, newHour
+    })
+  };
+
+  function createInfoExit( newHour ) {    
+    database.collection("users").doc(`EXIT-${id}`).set({[id]: newHour
+     //description, newHour
+   })
+ };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
         <Text>{greetings()}</Text>
         <Text>Registre aqui os seus horários:</Text>
+        <ButtonRegisterSearch
+          title={"HORÁRIO INICIAL NOVO"}
+          value={entryTime}
+          onPress={() => {
+            setId(moment().format('DD-MM-YYYY').toString(), 
+            createInfoEntry(moment().format('hh:mm:ss a').toString()))}                
+          }      
+        /> 
+        <ButtonRegisterSearch
+          title={"HORÁRIO FINAL NOVO"}
+          value={exitTime}
+          onPress={() => {
+            setId(moment().format('DD-MM-YYYY').toString(), 
+            createInfoExit(moment().format('hh:mm:ss a').toString()))}                
+          }      
+        /> 
        <ButtonRegisterSearch
           title={"HORÁRIO INICIAL"}
           value={entryTime}
