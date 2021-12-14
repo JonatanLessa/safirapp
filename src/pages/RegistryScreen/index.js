@@ -15,11 +15,17 @@ import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
 
 export default function RegistryScreen() {
   const navigation = useNavigation();
-  const [campo, setCampo] = useState('');
+  const [id, setId] = useState('');
   
   useEffect (()=> {
     navigation.setOptions({ title: 'REGISTRAR PONTO' });
   },[]);
+
+  useEffect (()=> {
+    navigation.setOptions({ title: 'REGISTRAR PONTO' });
+  },[id]);
+
+
 
   const greetings = () => {
     return `Olá ${'Marcelo'}!`;
@@ -36,11 +42,17 @@ export default function RegistryScreen() {
     AsyncStorage.setItem(key, value);
   };
 
-  function createInfo(description, newHour ) {    
-    database.collection('users').add({
-      description: newHour
+  function createInfoEntry( newHour ) {    
+     database.collection("users").doc(`ENTRY-${id}`).set({[id]: newHour
+      //description, newHour
     })
   };
+
+  function createInfoExit( newHour ) {    
+    database.collection("users").doc(`EXIT-${id}`).set({[id]: newHour
+     //description, newHour
+   })
+ };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -51,8 +63,16 @@ export default function RegistryScreen() {
           title={"HORÁRIO INICIAL NOVO"}
           value={entryTime}
           onPress={() => {
-            setCampo(moment().format('DD-MM-YYYY').toString(), 
-            createInfo(campo, moment().format('hh:mm:ss a').toString()))}                
+            setId(moment().format('DD-MM-YYYY').toString(), 
+            createInfoEntry(moment().format('hh:mm:ss a').toString()))}                
+          }      
+        /> 
+        <ButtonRegisterSearch
+          title={"HORÁRIO FINAL NOVO"}
+          value={exitTime}
+          onPress={() => {
+            setId(moment().format('DD-MM-YYYY').toString(), 
+            createInfoExit(moment().format('hh:mm:ss a').toString()))}                
           }      
         /> 
        <ButtonRegisterSearch

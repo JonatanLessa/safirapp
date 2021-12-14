@@ -13,6 +13,7 @@ import database from '../../config/firebaseconfig';
 import styles from '../../styles/styleShowScreen';
 import bs from '../../styles/button';
 import ButtonDataPicker from '../../Components/ButtonDataPicker';
+import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
 
 export default function ShowScreen() {
   const navigation = useNavigation();
@@ -37,6 +38,10 @@ export default function ShowScreen() {
     setExitInfo(value);
   };
 
+  function getInfoEntry( id ) {    
+    setUsers(database.collection("users").doc(`ENTRY-${id}`).get())
+ };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.viewCheck}>     
@@ -44,7 +49,15 @@ export default function ShowScreen() {
         <Text style={{ fontWeight: 'bold', margin: 10 }}>
           HORA DA ENTRADA/SAIDA
         </Text> 
-               
+
+        <ButtonRegisterSearch
+          title={"HORÁRIO FINAL NOVO"}
+          value={users}
+          onPress={() => {            
+            getInfoEntry("09-12-2021")}                
+          } 
+              
+        /> 
         <ButtonDataPicker
           title={"SELECIONAR DATA DE ENTRADA"}
           value={entryInfo}
