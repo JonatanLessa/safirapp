@@ -16,8 +16,8 @@ export default function ButtonDataPicker(props) {
         let tempDate = new Date(currentDate);
         let fDate = ('0' + tempDate.getDate()).slice(-2) + '-' + ('0' + (tempDate.getMonth() + 1)).slice(-2) + '-' + tempDate.getFullYear();
       
-        console.log(fDate) 
-        console.log(date)  
+        //console.log(fDate) 
+        //console.log(date)  
         props.onDateSelect(fDate)        
     };
     const showMode = (currentMode) => {
