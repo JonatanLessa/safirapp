@@ -28,6 +28,7 @@ const styleButton = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#000',
     width: 100,
+    marginTop: 200,
   },
 });
 
