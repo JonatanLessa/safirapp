@@ -18,13 +18,16 @@ import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
 
 
 export default function ShowScreen() {
-
   const navigation = useNavigation();
-
+  
+  useEffect (()=> {
+    navigation.setOptions({ title: 'CONSULTAR PONTO' });
+  },[]);
+  //armazena dados dos objetos
   const [data, setData] = useState([]);
-
+  //armazena a data selecionada pelo componente DataPicker
   const [date, setDate] = useState('');
-
+  //Resgata dos dados do Realtime Database
   const getDataFromService = () => {
     const db = getDatabase();
     const reference = ref(db, 'registroPonto');
@@ -44,6 +47,7 @@ export default function ShowScreen() {
     imprime();       
     })
   }
+  //Imprime dados no console
   const imprime = () => {
     data.forEach(function(nome) {      
       if (nome.data == date) {
@@ -51,11 +55,7 @@ export default function ShowScreen() {
         console.log(nome.hora)
       }
     });
-  }
-  
-  useEffect (()=> {
-    navigation.setOptions({ title: 'CONSULTAR PONTO' });
-  },[]);
+  }  
  
   return (
     <SafeAreaView style={styles.container}>
@@ -88,17 +88,3 @@ export default function ShowScreen() {
     </SafeAreaView>
   );
 }
-
-const styles2 = StyleSheet.create({
-
-  input: {
-    borderWidth: 1,
-    borderColor: '#000',
-    borderRadius: 8,
-    padding: 10,
-    margin: 5,
-    marginLeft: 0,
-    marginTop: 15,
-    width: 280,
-  },
-});
