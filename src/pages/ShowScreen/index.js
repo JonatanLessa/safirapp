@@ -23,8 +23,10 @@ export default function ShowScreen() {
   useEffect (()=> {
     navigation.setOptions({ title: 'CONSULTAR PONTO' });
   },[]);
-  //armazena dados dos objetos
-  const [data, setData] = useState([]);
+  //armazena dados dos objetos com registro na entrada
+  const [dataEntry, setDataEntry] = useState([]);
+  //armazena dados dos objetos com registro na saída
+  const [dataExit, setDataExit] = useState([]);
   //armazena a data selecionada pelo componente DataPicker
   const [date, setDate] = useState('');
   //Resgata dos dados do Realtime Database
@@ -34,23 +36,41 @@ export default function ShowScreen() {
 
     onValue(reference, (snapshot) => {
 
-    const datas = [];
+    const entryArray = [];
+    const exitArray = [];
+
     snapshot.forEach(data => {
-      datas.push({
+      entryArray.push({
         id: data.key,
-        data: data.val().date,
+        data: data.val().dateEntry,
+        hora: data.val().hour  
+      });
+    });
+    snapshot.forEach(data => {
+      exitArray.push({
+        id: data.key,
+        data: data.val().dateExit,
         hora: data.val().hour  
       });
     });
     
-    setData(datas);  
+    setDataEntry(entryArray);  
+    setDataExit(exitArray);
     imprime();       
     })
   }
   //Imprime dados no console
   const imprime = () => {
-    data.forEach(function(nome) {      
+    dataEntry.forEach(function(nome) {      
       if (nome.data == date) {
+        console.log("Entrada")
+        console.log(nome.data)
+        console.log(nome.hora)
+      }
+    });
+    dataExit.forEach(function(nome) {      
+      if (nome.data == date) {
+        console.log("Saída")
         console.log(nome.data)
         console.log(nome.hora)
       }
