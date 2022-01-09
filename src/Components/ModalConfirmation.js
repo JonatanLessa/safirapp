@@ -3,7 +3,7 @@ import { Text, View, Button, StyleSheet, TouchableOpacity, Modal } from 'react-n
 
 export default function ModalConfirmation(props){
 
-    const {visible, setVisible, onConfirm} = props
+    const { visible, setVisible, onConfirm } = props
 
     return(
         <View>
