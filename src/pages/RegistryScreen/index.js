@@ -26,21 +26,23 @@ export default function RegistryScreen() {
  
   const [date, setDate] = useState(''); 
   const [hour, setHour] = useState('');
-  const [visibleModal, setVisibleModal] = useState(false);
+  const [visibleModalEntry, setVisibleModalEntry] = useState(false);
+  const [visibleModalExit, setVisibleModalExit] = useState(false);
 
   const addData = () => {
       setDate(moment().format('DD-MM-YYYY').toString());
       setHour(moment().format('hh:mm:ss a').toString());           
   }
 
-  const addDate = () => {
+  const addDate = (type) => {
+    console.log(type);
     const db = getDatabase();
     const reference = ref(db, 'registroPonto');
-    push(reference, {
-      "date" : date,
-      "hour" : hour
-    });
-  }
+      push(reference, {
+        [type] : date,
+        "hour" : hour
+      });
+    }    
 
   return (
     <SafeAreaView style={styles.container}>
@@ -51,11 +53,11 @@ export default function RegistryScreen() {
             title={"REGISTRAR ENTRADA"}
             valueDate={date}
             valueHour={hour}
-            visible={visibleModal}
-            setVisible={setVisibleModal}
-            onConfirm={(addDate)}
+            visible={visibleModalEntry}
+            setVisible={setVisibleModalEntry}
+            onConfirm={() => addDate("dateEntry")}
             onPress={()=>{
-              setVisibleModal(true)
+              setVisibleModalEntry(true)
               addData()
             }}
         />  
@@ -63,11 +65,11 @@ export default function RegistryScreen() {
             title={"REGISTRAR SAÍDA"}
             valueDate={date}
             valueHour={hour}
-            visible={visibleModal}
-            setVisible={setVisibleModal}
-            onConfirm={(addDate)}
+            visible={visibleModalExit}
+            setVisible={setVisibleModalExit}
+            onConfirm={() => addDate("dateExit")}
             onPress={()=>{
-              setVisibleModal(true)
+              setVisibleModalExit(true)
               addData()
             }}
         />    
