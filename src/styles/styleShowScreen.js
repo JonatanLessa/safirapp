@@ -16,6 +16,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
   },
+  viewDeviceActivationScreen: {
+    flexDirection: "column",
+    //justifyContent: ,
+    //alignItems: "center",
+    //height: "20%",    
+   // marginTop: 20,
+    marginLeft: 50,
+    
+  },
 });
 
 export default styles;
