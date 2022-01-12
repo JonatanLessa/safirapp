@@ -4,6 +4,7 @@ import { createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from './src/pages/LoginScreen';
 import RegistryScreen from './src/pages/RegistryScreen';
 import ShowScreen from './src/pages/ShowScreen';
+import DeviceActivationScreen from './src/pages/DeviceActivationScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,12 @@ export default function App() {
         <Stack.Screen 
         name="ShowScreen" 
         component={ShowScreen}
+        options={{
+          headerTintColor: "#000"
+        }}></Stack.Screen>
+        <Stack.Screen 
+        name="DeviceActivationScreen" 
+        component={DeviceActivationScreen}
         options={{
           headerTintColor: "#000"
         }}></Stack.Screen>
