@@ -30,6 +30,15 @@ const styleButton = StyleSheet.create({
     width: 100,
     marginTop: 200,
   },
+  buttonDeviceActivation: {
+    backgroundColor: '#888888',
+    padding: 10,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#000',
+    width: 100,
+    marginTop: 200,
+  }
 });
 
 export default styleButton;
