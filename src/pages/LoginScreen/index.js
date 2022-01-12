@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import styles from '../../styles/style';
 import bs from '../../styles/button';
-import imgStyle from '../../styles/imgStyle';
+import imgStyle from '../../styles/imgStyle'; 
 
 import appLogo from '../../../assets/safir-mobile2.png';
 
@@ -33,6 +33,13 @@ export default function LoginScreen() {
           title="CONSULTAR REGISTRO"
           onPress={() => {
             navigation.navigate('ShowScreen');
+          }}
+        />
+        <Button
+          buttonStyle={bs.button}
+          title="ATIVAÇÃO DE DISPOSITIVOS"
+          onPress={() => {
+            navigation.navigate('DeviceActivationScreen');
           }}
         />
       </View>
