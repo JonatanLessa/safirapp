@@ -15,73 +15,67 @@ import ModalConfirmation from '../../Components/ModalConfirmation';
 
 export default function RegistryScreen() {
   const navigation = useNavigation();
-  
-  useEffect (()=> {
+
+  useEffect(() => {
     navigation.setOptions({ title: 'REGISTRAR PONTO' });
-  },[]);  
+  }, []);
 
   const greetings = () => {
     return `Olá ${'Marcelo'}!`;
   };
- 
-  const [date, setDate] = useState(''); 
+
+  const [date, setDate] = useState('');
   const [hour, setHour] = useState('');
   const [visibleModalEntry, setVisibleModalEntry] = useState(false);
   const [visibleModalExit, setVisibleModalExit] = useState(false);
 
   const addData = () => {
-      setDate(moment().format('DD-MM-YYYY').toString());
-      setHour(moment().format('hh:mm:ss a').toString());           
+    setDate(moment().format('DD-MM-YYYY').toString());
+    setHour(moment().format('hh:mm:ss a').toString());
   }
 
   const addDate = (type) => {
     console.log(type);
     const db = getDatabase();
     const reference = ref(db, 'registroPonto');
-      push(reference, {
-        [type] : date,
-        "hour" : hour
-      });
-    }    
+    push(reference, {
+      [type]: date,
+      "hour": hour
+    });
+  }
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
-        <Text>{greetings()}</Text>
-        <Text>Registre aqui os seus horários:</Text>        
+      <Text>{greetings()}</Text>
+      <Text>Registre aqui os seus horários:</Text>
+      
+      <View style={styles.registryContainer}>
         <ModalConfirmation
-            title={"REGISTRAR ENTRADA"}
-            valueDate={date}
-            valueHour={hour}
-            visible={visibleModalEntry}
-            setVisible={setVisibleModalEntry}
-            onConfirm={() => addDate("dateEntry")}
-            onPress={()=>{
-              setVisibleModalEntry(true)
-              addData()
-            }}
-        />  
+          title={"ENTRADA"}
+          valueDate={date}
+          valueHour={hour}
+          visible={visibleModalEntry}
+          setVisible={setVisibleModalEntry}
+          onConfirm={() => addDate("dateEntry")}
+          onPress={() => {
+            setVisibleModalEntry(true)
+            addData()
+          }}
+        />
         <ModalConfirmation
-            title={"REGISTRAR SAÍDA"}
-            valueDate={date}
-            valueHour={hour}
-            visible={visibleModalExit}
-            setVisible={setVisibleModalExit}
-            onConfirm={() => addDate("dateExit")}
-            onPress={()=>{
-              setVisibleModalExit(true)
-              addData()
-            }}
-        />    
+          title={"SAÍDA"}
+          valueDate={date}
+          valueHour={hour}
+          visible={visibleModalExit}
+          setVisible={setVisibleModalExit}
+          onConfirm={() => addDate("dateExit")}
+          onPress={() => {
+            setVisibleModalExit(true)
+            addData()
+          }}
+        />
       </View>
-      <Button
-        buttonStyle={bs.buttonBack}
-        title="VOLTAR"
-        onPress={() => {
-          navigation.navigate('LoginScreen');
-        }}
-      />
-      <StatusBar style="auto" />      
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Text, View, TouchableOpacity, StyleSheet, Button } from "react-native";
 import DateTimePicker from '@react-native-community/datetimepicker';
+import btn from '../styles/button'
 
 export default function ButtonDataPicker(props) {
 
@@ -29,9 +30,9 @@ export default function ButtonDataPicker(props) {
         <View style={styles.viewCheck}>
             <View style={styles.buttonCheck}>
                 <TouchableOpacity
-                    style={styles.buttonStyle}
+                    style={btn.buttonShowScreen}
                     onPress={ () => showMode('date')}>
-                    <Text style={{ textAlign: 'center', marginTop: 15 }}>
+                    <Text style={{ textAlign: 'center', marginTop: 15, color: '#fff', fontWeight: 'bold' }}>
                         {props.title}
                     </Text>
                 </TouchableOpacity>

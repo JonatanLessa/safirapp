@@ -1,13 +1,17 @@
 import React from "react";
-import { Text, View, Button, StyleSheet, TouchableOpacity, Modal } from 'react-native';
+import { Text, View, Button, StyleSheet, TouchableOpacity, Modal, Image } from 'react-native';
+import btn from '../styles/button'
+import styles2 from '../styles/imgStyle'
+// import Entry from '../../../assets/entry.png'
+// import Exit from '../../../assets/exit.png'
 
-export default function ModalConfirmation(props){
+export default function ModalConfirmation(props) {
 
     const { visible, setVisible, onConfirm } = props
 
-    return(
+    return (
         <View>
-            <Modal 
+            <Modal
                 style={styles.modal}
                 animationType="fade"
                 transparent={true}
@@ -19,33 +23,35 @@ export default function ModalConfirmation(props){
                     <View style={styles.viewButton}>
                         <Button style={styles.buttonView}
                             title="SIM"
-                            onPress={()=>{
+                            onPress={() => {
                                 onConfirm()
                                 setVisible(false)
                             }}
                         />
                         <Button style={styles.buttonView}
                             title="Cancelar"
-                            onPress={()=>{setVisible(false)}}
+                            onPress={() => { setVisible(false) }}
                         />
                     </View>
                 </View>
             </Modal>
-            <TouchableOpacity  
-                style={styles.buttonStyle}
+            <TouchableOpacity
+                style={btn.buttonRegistryEntry}
                 onPress={props.onPress} >
-                <Text style={{ textAlign: 'center', marginTop: 15 }}>
+                <Text style={{ marginLeft: 10, marginTop: 10, fontSize: 15, fontWeight: 'bold', color: '#fff' }}>
                     {props.title}
-                 </Text>
+                </Text>
             </TouchableOpacity>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    viewText: {     
-        backgroundColor: '#deb887',
-        borderRadius: 20,
+    viewText: {
+        backgroundColor: '#BCD0C5',
+        borderRadius: 7,
+        borderWidth: 2,
+        borderColor: '#2CAF1D',
         elevation: 100,
         marginTop: 400,
         marginLeft: 10,
@@ -55,37 +61,39 @@ const styles = StyleSheet.create({
         flexDirection: "column",
     },
     textModal: {
-        color: '#fff',
-        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#000',
+        fontSize: 18,
         height: 60,
-    }, 
+    },
     viewButton: {
         flexDirection: "row",
         justifyContent: "space-around",
         width: "100%"
     },
-    button: {
+    buttonView: {
+        borderRadius: 20,
 
     },
     viewCheck: {
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     buttonStyle: {
-      marginTop: 25,
-      backgroundColor: '#8CDB94',
-      width: 280,
-      height: 50,
-      borderRadius: 5,
+        marginTop: 25,
+        backgroundColor: '#8CDB94',
+        width: 280,
+        height: 50,
+        borderRadius: 5,
     },
     buttonCheck: {
-      flexDirection: 'column',
-      justifyContent: 'center',
-      width: '70%',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        width: '70%',
     },
     textCheck: {
         fontWeight: 'bold',
         fontSize: 20,
-      }, 
+    },
 });
