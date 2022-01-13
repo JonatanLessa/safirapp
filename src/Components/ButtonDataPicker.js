@@ -9,29 +9,29 @@ export default function ButtonDataPicker(props) {
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
 
-    const onChange = (event, selectedDate) => {  
-        const currentDate = selectedDate || date;     
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
         setShow(Platform.OS === 'ios');
         setDate(currentDate);
 
         let tempDate = new Date(currentDate);
         let fDate = ('0' + tempDate.getDate()).slice(-2) + '-' + ('0' + (tempDate.getMonth() + 1)).slice(-2) + '-' + tempDate.getFullYear();
-      
+
         //console.log(fDate) 
         //console.log(date)  
-        props.onDateSelect(fDate)        
+        props.onDateSelect(fDate)
     };
     const showMode = (currentMode) => {
         setShow(true);
         setMode(currentMode);
     };
 
-    return(
+    return (
         <View style={styles.viewCheck}>
-            <View style={styles.buttonCheck}>
+            <View style={btn.buttonCheck}>
                 <TouchableOpacity
                     style={btn.buttonShowScreen}
-                    onPress={ () => showMode('date')}>
+                    onPress={() => showMode('date')}>
                     <Text style={{ textAlign: 'center', marginTop: 15, color: '#fff', fontWeight: 'bold' }}>
                         {props.title}
                     </Text>
@@ -46,32 +46,21 @@ export default function ButtonDataPicker(props) {
                     is24Hour={true}
                     display="default"
                     onChange={onChange}
-                />            
-            )}           
+                />
+            )}
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     viewCheck: {
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    buttonStyle: {
-      marginTop: 25,
-      backgroundColor: '#8CDB94',
-      width: 280,
-      height: 50,
-      borderRadius: 5,
-    },
-    buttonCheck: {
-      flexDirection: 'column',
-      justifyContent: 'center',
-      width: '70%',
-    },
+
     textCheck: {
         fontWeight: 'bold',
         fontSize: 20,
-      }, 
+    },
 });

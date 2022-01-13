@@ -82,7 +82,19 @@ const styleButton = StyleSheet.create({
     width: 280,
     height: 50,
     borderRadius: 5,
-  }
+  },
+  buttonStyle: {
+    marginTop: 25,
+    backgroundColor: '#8CDB94',
+    width: 280,
+    height: 50,
+    borderRadius: 5,
+  },
+  buttonCheck: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: '70%',
+  },
 });
 
 export default styleButton;

@@ -7,7 +7,7 @@ export default function ButtonRegisterSearch(props)  {
  
   return (
     <View style={styles.viewCheck}>
-      <View style={styles.buttonCheck}>
+      <View style={btn.buttonCheck}>
         <TouchableOpacity  
             style={btn.buttonShowScreen}
             onPress={props.onPress} >
@@ -26,11 +26,6 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
-    },
-    buttonCheck: {
-      flexDirection: 'column',
-      justifyContent: 'center',
-      width: '70%',
     },
     textCheck: {
         fontWeight: 'bold',

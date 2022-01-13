@@ -9,7 +9,6 @@ import app from '../../config/firebaseconfig';
 import { getDatabase, ref, set, push } from 'firebase/database';
 
 import styles from '../../styles/style';
-import bs from '../../styles/button';
 
 import ModalConfirmation from '../../Components/ModalConfirmation';
 
@@ -21,7 +20,7 @@ export default function RegistryScreen() {
   }, []);
 
   const greetings = () => {
-    return `Olá ${'Marcelo'}!`;
+    return `Olá ${'Maria'}!`;
   };
 
   const [date, setDate] = useState('');
@@ -46,8 +45,8 @@ export default function RegistryScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>{greetings()}</Text>
-      <Text>Registre aqui os seus horários:</Text>
+      <Text style={{fontSize: 25, fontWeight: 'bold'}}>{greetings()}</Text>
+      <Text style={{fontSize: 20, fontWeight: 'bold'}}>Registre aqui os seus horários:</Text>
       
       <View style={styles.registryContainer}>
         <ModalConfirmation

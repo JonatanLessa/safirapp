@@ -135,22 +135,3 @@ export default function ShowScreen() {
     </SafeAreaView>
   );
 }
-/*
-//Imprime dados no console
-  const imprime = (entryArray, exitArray) => {
-    dataEntry.forEach(function(nome) {      
-      if (nome.data == date) {
-        console.log("Entrada")
-        console.log(nome.data)
-        console.log(nome.hora)
-      }
-    });
-    dataExit.forEach(function(nome) {      
-      if (nome.data == date) {
-        console.log("Saída")
-        console.log(nome.data)
-        console.log(nome.hora)
-      }
-    });    
-  }  
-  */

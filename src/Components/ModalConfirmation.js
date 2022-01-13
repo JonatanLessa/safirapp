@@ -19,16 +19,16 @@ export default function ModalConfirmation(props) {
                 style={{}}
             >
                 <View style={styles.viewText}>
-                    <Text style={styles.textModal}>CONFIRMA REGISTRO PARA {props.valueDate} ÀS {props.valueHour}</Text>
+                    <Text style={styles.textModal}> CONFIRMA REGISTRO PARA {props.valueDate} ÀS {props.valueHour}</Text>
                     <View style={styles.viewButton}>
-                        <Button style={styles.buttonView}
+                        <Button
                             title="SIM"
                             onPress={() => {
                                 onConfirm()
                                 setVisible(false)
                             }}
                         />
-                        <Button style={styles.buttonView}
+                        <Button
                             title="Cancelar"
                             onPress={() => { setVisible(false) }}
                         />
@@ -70,30 +70,5 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         width: "100%"
-    },
-    buttonView: {
-        borderRadius: 20,
-
-    },
-    viewCheck: {
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    buttonStyle: {
-        marginTop: 25,
-        backgroundColor: '#8CDB94',
-        width: 280,
-        height: 50,
-        borderRadius: 5,
-    },
-    buttonCheck: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        width: '70%',
-    },
-    textCheck: {
-        fontWeight: 'bold',
-        fontSize: 20,
     },
 });
