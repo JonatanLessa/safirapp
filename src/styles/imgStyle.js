@@ -6,14 +6,15 @@ export default StyleSheet.create({
     resizeMode: 'contain',
   },
   waterPump: {
-    //borderTopRightRadius: 20,
-    //borderBottomRightRadius: 20,
-    //borderBottomLeftRadius: 20,
-    //borderTopLeftRadius: 20,
+    marginTop: 10,
     width: 100,
     height: 100,
-    //resizeMode: 'contain',
-    borderWidth: 2,
-    borderColor: "gray"
+  },
+  buttonImageIconStyle: {
+    padding: 10, 
+    margin: 5, 
+    height: 25, 
+    width: 25, 
+    resizeMode: 'stretch', 
   },
 });
