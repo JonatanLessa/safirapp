@@ -14,8 +14,8 @@ import app from '../../config/firebaseconfig';
 
 import styles from '../../styles/styleShowScreen';
 import bs from '../../styles/button';
-import ButtonDataPicker from '../../Components/ButtonDataPicker';
-import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
+import ButtonDataPicker from '../../components/ButtonDataPicker';
+import ButtonRegisterSearch from '../../components/ButtonRegisterSeach';
 import { CONSTANTS } from '@firebase/util';
 
 

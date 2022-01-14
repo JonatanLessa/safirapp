@@ -10,7 +10,7 @@ import { getDatabase, ref, set, push } from 'firebase/database';
 
 import styles from '../../styles/style';
 
-import ModalConfirmation from '../../Components/ModalConfirmation';
+import ModalConfirmation from '../../components/ModalConfirmation';
 
 export default function RegistryScreen() {
   const navigation = useNavigation();
