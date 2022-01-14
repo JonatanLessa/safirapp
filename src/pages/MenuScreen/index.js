@@ -9,7 +9,7 @@ import imgStyle from '../../styles/imgStyle';
 
 import appLogo from '../../../assets/safir-mobile2.png';
 
-export default function LoginScreen() {
+export default function MenuScreen() {
   const navigation = useNavigation();
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator} from '@react-navigation/native-stack';
-import LoginScreen from './src/pages/LoginScreen';
+import MenuScreen from './src/pages/MenuScreen';
 import RegistryScreen from './src/pages/RegistryScreen';
 import ShowScreen from './src/pages/ShowScreen';
 import DeviceActivationScreen from './src/pages/DeviceActivationScreen';
@@ -11,16 +11,16 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreen">
+      <Stack.Navigator initialRouteName="MenuScreen">
         <Stack.Screen         
-          name="LoginScreen" 
-          component={LoginScreen}
+          name="MenuScreen" 
+          component={MenuScreen}
           options={{
             headerTintColor: "#000"
           }}>
-        </Stack.Screen>    
+        </Stack.Screen>
 
-        <Stack.Screen 
+        <Stack.Screen
           name="RegistryScreen" 
           component={RegistryScreen}
           options={{
