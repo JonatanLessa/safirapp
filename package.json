@@ -36,7 +36,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "eslint-plugin-prettier": "^4.0.0"
+    "eslint": "^8.6.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-native": "3.11.0"
   },
   "private": true
 }
