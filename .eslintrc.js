@@ -20,5 +20,6 @@ module.exports = {
         "react-native"
     ],
     "rules": {
+        "react/prop-types": "off"
     }
 };

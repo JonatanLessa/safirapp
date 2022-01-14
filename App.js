@@ -9,34 +9,40 @@ import DeviceActivationScreen from './src/pages/DeviceActivationScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-//
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="LoginScreen">
         <Stack.Screen         
-        name="LoginScreen" 
-        component={LoginScreen}
-        options={{
-          headerTintColor: "#000"
-        }}></Stack.Screen>    
+          name="LoginScreen" 
+          component={LoginScreen}
+          options={{
+            headerTintColor: "#000"
+          }}>
+        </Stack.Screen>    
+
         <Stack.Screen 
-        name="RegistryScreen" 
-        component={RegistryScreen}
-        options={{
-          headerTintColor: "#000"
-        }}></Stack.Screen>      
+          name="RegistryScreen" 
+          component={RegistryScreen}
+          options={{
+            headerTintColor: "#000"
+          }}>
+        </Stack.Screen>      
+
         <Stack.Screen 
-        name="ShowScreen" 
-        component={ShowScreen}
-        options={{
-          headerTintColor: "#000"
-        }}></Stack.Screen>
+          name="ShowScreen" 
+          component={ShowScreen}
+          options={{
+            headerTintColor: "#000"
+          }}>
+        </Stack.Screen>
+
         <Stack.Screen 
-        name="DeviceActivationScreen" 
-        component={DeviceActivationScreen}
-        options={{
-          headerTintColor: "#000"
-        }}></Stack.Screen>
+          name="DeviceActivationScreen" 
+          component={DeviceActivationScreen}
+          options={{
+            headerTintColor: "#000"
+          }}>
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   )  

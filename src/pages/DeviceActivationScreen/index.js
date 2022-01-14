@@ -8,8 +8,6 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 
-import app from '../../config/firebaseconfig';
-
 import styles from '../../styles/styleShowScreen';
 import bs from '../../styles/button';
 import waterPump from '../../../assets/water-pump01.png';
@@ -38,7 +36,7 @@ export default function DeviceActivationScreen() {
             <View style={styles.viewDeviceActivationScreen}>
                 <View>
                     <View>
-                        <Text style={{ fontSize: 11, fontWeight: 'bold' }}> BOMBA D'ÁGUA: </Text>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold' }}> BOMBA D&apos;ÁGUA: </Text>
                     </View>
                     <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -40 }}>
                         <Image source={waterPump} style={imgStyle.waterPump} />

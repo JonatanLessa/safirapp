@@ -7,17 +7,11 @@ import {
   Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Button } from 'react-native-elements/dist/buttons/Button';
-import { getDatabase, ref, onValue, connectDatabaseEmulator } from 'firebase/database';
-
-import app from '../../config/firebaseconfig';
+import { getDatabase, ref, onValue } from 'firebase/database';
 
 import styles from '../../styles/styleShowScreen';
-import bs from '../../styles/button';
 import ButtonDataPicker from '../../components/ButtonDataPicker';
 import ButtonRegisterSearch from '../../components/ButtonRegisterSeach';
-import { CONSTANTS } from '@firebase/util';
-
 
 export default function ShowScreen() {
   const navigation = useNavigation();
@@ -59,7 +53,6 @@ export default function ShowScreen() {
           });
         }
       });
-      //Armazena 
       setDataEntry(entryArray);
       setDataExit(exitArray);
 
@@ -124,14 +117,6 @@ export default function ShowScreen() {
         />
         <Text style={{ color: '#fff', fontWeight: 'bold' }}> SAÍDA </Text>
       </View>
-
-      {/* <View style={{ paddingBottom: 100 }}>
-        <Button
-          buttonStyle={bs.buttonBack2}
-          title="VOLTAR "
-          onPress={() => navigation.navigate('LoginScreen')}
-        />
-      </View> */}
     </SafeAreaView>
   );
 }
