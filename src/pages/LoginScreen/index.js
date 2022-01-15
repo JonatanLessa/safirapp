@@ -10,11 +10,11 @@ import imgStyle from '../../styles/imgStyle';
 import appLogo from '../../../assets/safir-mobile2.png';
 
 export default function LoginScreen() {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
-  useEffect(() => {
-    navigation.setOptions({ title: 'Safir - Registro de Ponto' });
-  }, []);
+  // useEffect(() => {
+  //   navigation.setOptions({ title: 'Safir - Registro de Ponto' });
+  // }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -24,23 +24,23 @@ export default function LoginScreen() {
         <Button
           buttonStyle={btn.buttonShowScreen}
           title="REGISTRO DE PONTO"
-          onPress={() => {
-            navigation.navigate('RegistryScreen');
-          }}
+          // onPress={() => {
+          //   navigation.navigate('RegistryScreen');
+          // }}
         />
         <Button
           buttonStyle={btn.buttonShowScreen}
           title="CONSULTAR REGISTRO"
-          onPress={() => {
-            navigation.navigate('ShowScreen');
-          }}
+          // onPress={() => {
+          //   navigation.navigate('ShowScreen');
+          // }}
         />
         <Button
           buttonStyle={btn.buttonShowScreen}
           title="ATIVAÇÃO DE DISPOSITIVOS"
-          onPress={() => {
-            navigation.navigate('DeviceActivationScreen');
-          }}
+          // onPress={() => {
+          //   navigation.navigate('DeviceActivationScreen');
+          // }}
         />
       </View>
     </SafeAreaView>
