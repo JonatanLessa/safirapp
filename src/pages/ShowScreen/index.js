@@ -8,7 +8,7 @@ import {
   } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
-import { getDatabase, ref, onValue, connectDatabaseEmulator } from 'firebase/database';
+import { getDatabase, ref, onValue } from 'firebase/database';
 
 import app from '../../config/firebaseconfig';
 
@@ -16,7 +16,6 @@ import styles from '../../styles/styleShowScreen';
 import bs from '../../styles/button';
 import ButtonDataPicker from '../../Components/ButtonDataPicker';
 import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
-import { CONSTANTS } from '@firebase/util';
 
 
 export default function ShowScreen() {
