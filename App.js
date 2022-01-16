@@ -1,43 +1,42 @@
-import React from 'react';
+import * as React from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator} from '@react-navigation/native-stack';
-import LoginScreen from './src/pages/LoginScreen';
+
 import RegistryScreen from './src/pages/RegistryScreen';
 import ShowScreen from './src/pages/ShowScreen';
 import DeviceActivationScreen from './src/pages/DeviceActivationScreen';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-//
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreen">
-        <Stack.Screen         
-        name="LoginScreen" 
-        component={LoginScreen}
-        options={{
-          headerTintColor: "#000"
-        }}></Stack.Screen>    
-        <Stack.Screen 
-        name="RegistryScreen" 
-        component={RegistryScreen}
-        options={{
-          headerTintColor: "#000"
-        }}></Stack.Screen>      
-        <Stack.Screen 
-        name="ShowScreen" 
-        component={ShowScreen}
-        options={{
-          headerTintColor: "#000"
-        }}></Stack.Screen>
-        <Stack.Screen 
-        name="DeviceActivationScreen" 
-        component={DeviceActivationScreen}
-        options={{
-          headerTintColor: "#000"
-        }}></Stack.Screen>
-      </Stack.Navigator>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Registro') {
+              iconName = focused ? 'finger-print-outline' : 'finger-print';
+            }
+            else if (route.name === 'Relatório') {
+              iconName = focused ? 'reader-outline' : 'reader';
+            }
+            else if (route.name === 'Dispositivos') {
+              iconName = focused ? 'flash-outline' : 'flash';
+            }
+
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: '#8CDB94',
+          tabBarInactiveTintColor: '#000',
+        })}
+      >
+        <Tab.Screen name="Registro" component={RegistryScreen} />
+        <Tab.Screen name="Relatório" component={ShowScreen} />
+        <Tab.Screen name="Dispositivos" component={DeviceActivationScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
-  )  
+  );
 }

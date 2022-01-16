@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -6,25 +6,18 @@ import {
   FlatList,
   Alert,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { Button } from 'react-native-elements/dist/buttons/Button';
+
 import { getDatabase, ref, onValue, connectDatabaseEmulator } from 'firebase/database';
 
 import app from '../../config/firebaseconfig';
 
 import styles from '../../styles/styleShowScreen';
-import bs from '../../styles/button';
 import ButtonDataPicker from '../../Components/ButtonDataPicker';
 import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
 import { CONSTANTS } from '@firebase/util';
 
-
 export default function ShowScreen() {
-  const navigation = useNavigation();
 
-  useEffect(() => {
-    navigation.setOptions({ title: 'CONSULTAR PONTO' });
-  }, []);
   //armazena a data selecionada pelo componente DataPicker
   const [date, setDate] = useState('');
   //armazena dados dos objetos com registro na entrada
@@ -37,7 +30,6 @@ export default function ShowScreen() {
     const reference = ref(db, 'registroPonto');
 
     onValue(reference, (snapshot) => {
-
       const entryArray = [];
       const exitArray = [];
       //Encontra objetos com a data de entrada e saída selecionada pelo DataPicker e add nos arrays
@@ -124,14 +116,6 @@ export default function ShowScreen() {
         />
         <Text style={{ color: '#fff', fontWeight: 'bold' }}> SAÍDA </Text>
       </View>
-
-      {/* <View style={{ paddingBottom: 100 }}>
-        <Button
-          buttonStyle={bs.buttonBack2}
-          title="VOLTAR "
-          onPress={() => navigation.navigate('LoginScreen')}
-        />
-      </View> */}
     </SafeAreaView>
   );
 }

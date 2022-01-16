@@ -7,8 +7,8 @@ export default StyleSheet.create({
   },
   waterPump: {
     marginTop: 10,
-    width: 100,
-    height: 100,
+    width: 70,
+    height: 70,
   },
   buttonImageIconStyle: {
     padding: 10, 
