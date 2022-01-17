@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     View,
     Text,
     Image,
     SafeAreaView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { Button } from 'react-native-elements/dist/buttons/Button';
 
+import { Button } from 'react-native-elements/dist/buttons/Button';
 import styles from '../../styles/styleShowScreen';
 import bs from '../../styles/button';
 import waterPump from '../../../assets/water-pump01.png';
@@ -15,12 +14,6 @@ import sprinkler from '../../../assets/sprinkler.png';
 import imgStyle from '../../styles/imgStyle';
 
 export default function DeviceActivationScreen() {
-    const navigation = useNavigation();
-
-    useEffect(() => {
-        navigation.setOptions({ title: 'ATIVAÇÃO DE DISPOSITIVOS' });
-    }, []);
-
     const [deviceOn1, setDeviceOn1] = useState(false)
     const toggleDeviceOn1 = () => setDeviceOn1(!deviceOn1)
 
@@ -38,7 +31,7 @@ export default function DeviceActivationScreen() {
                     <View>
                         <Text style={{ fontSize: 11, fontWeight: 'bold' }}> BOMBA D&apos;ÁGUA: </Text>
                     </View>
-                    <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -40 }}>
+                    <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -55 }}>
                         <Image source={waterPump} style={imgStyle.waterPump} />
                         <Button
                             buttonStyle={deviceOn1 ? bs.buttonDeviceOn : bs.buttonDeviceOff}
@@ -51,7 +44,7 @@ export default function DeviceActivationScreen() {
                     <View>
                         <Text style={{ fontSize: 11, fontWeight: 'bold' }}> REGISTRO SETOR 01: </Text>
                     </View>
-                    <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -40 }}>
+                    <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -55 }}>
                         <Image source={sprinkler} style={imgStyle.waterPump} />
                         <Button
                             buttonStyle={deviceOn2 ? bs.buttonDeviceOn : bs.buttonDeviceOff}
@@ -64,7 +57,7 @@ export default function DeviceActivationScreen() {
                     <View>
                         <Text style={{ fontSize: 11, fontWeight: 'bold' }}> REGISTRO SETOR 02: </Text>
                     </View>
-                    <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -40 }}>
+                    <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -55 }}>
                         <Image source={sprinkler} style={imgStyle.waterPump} />
                         <Button
                             buttonStyle={deviceOn3 ? bs.buttonDeviceOn : bs.buttonDeviceOff}

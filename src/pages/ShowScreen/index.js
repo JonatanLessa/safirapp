@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -6,7 +6,7 @@ import {
   FlatList,
   Alert,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+
 import { getDatabase, ref, onValue } from 'firebase/database';
 
 import styles from '../../styles/styleShowScreen';
@@ -14,11 +14,6 @@ import ButtonDataPicker from '../../components/ButtonDataPicker';
 import ButtonRegisterSearch from '../../components/ButtonRegisterSeach';
 
 export default function ShowScreen() {
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    navigation.setOptions({ title: 'CONSULTAR PONTO' });
-  }, []);
   //armazena a data selecionada pelo componente DataPicker
   const [date, setDate] = useState('');
   //armazena dados dos objetos com registro na entrada
@@ -31,7 +26,6 @@ export default function ShowScreen() {
     const reference = ref(db, 'registroPonto');
 
     onValue(reference, (snapshot) => {
-
       const entryArray = [];
       const exitArray = [];
       //Encontra objetos com a data de entrada e saída selecionada pelo DataPicker e add nos arrays

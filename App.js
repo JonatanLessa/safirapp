@@ -1,58 +1,42 @@
-import React from 'react';
+import * as React from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import LoginScreen from './src/pages/LoginScreen';
-import MenuScreen from './src/pages/MenuScreen';
 import RegistryScreen from './src/pages/RegistryScreen';
 import ShowScreen from './src/pages/ShowScreen';
 import DeviceActivationScreen from './src/pages/DeviceActivationScreen';
 
-import { AuthContextProvider } from './src/context/AuthContext';
-
-const Stack = createNativeStackNavigator();
-
-const screenOptions = { headerTintColor: "#000" }
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <AuthContextProvider>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="LoginScreen">
-          <Stack.Screen
-            name="LoginScreen"
-            component={LoginScreen}
-            options={{
-              headerShown: false,
-              ...screenOptions
-            }}>
-          </Stack.Screen>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
 
-          <Stack.Screen
-            name="MenuScreen"
-            component={MenuScreen}
-            options={screenOptions}>
-          </Stack.Screen>
+            if (route.name === 'Registro') {
+              iconName = focused ? 'finger-print-outline' : 'finger-print';
+            }
+            else if (route.name === 'Relatório') {
+              iconName = focused ? 'reader-outline' : 'reader';
+            }
+            else if (route.name === 'Dispositivos') {
+              iconName = focused ? 'flash-outline' : 'flash';
+            }
 
-          <Stack.Screen
-            name="RegistryScreen"
-            component={RegistryScreen}
-            options={screenOptions}>
-          </Stack.Screen>
-
-          <Stack.Screen
-            name="ShowScreen"
-            component={ShowScreen}
-            options={screenOptions}>
-          </Stack.Screen>
-
-          <Stack.Screen
-            name="DeviceActivationScreen"
-            component={DeviceActivationScreen}
-            options={screenOptions}>
-          </Stack.Screen>
-        </Stack.Navigator>
-      </NavigationContainer>
-    </AuthContextProvider>
-  )  
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+            tabBarActiveTintColor: '#8CDB94',
+            tabBarInactiveTintColor: '#000',
+        })}
+      >
+        <Tab.Screen name="Registro" component={RegistryScreen} />
+        <Tab.Screen name="Relatório" component={ShowScreen} />
+        <Tab.Screen name="Dispositivos" component={DeviceActivationScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
 }

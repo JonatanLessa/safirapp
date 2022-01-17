@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Text, View, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { useNavigation } from '@react-navigation/native';
 import moment from 'moment';
 
 import { getDatabase, ref, push } from 'firebase/database';
@@ -11,12 +10,6 @@ import styles from '../../styles/style';
 import ModalConfirmation from '../../components/ModalConfirmation';
 
 export default function RegistryScreen() {
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    navigation.setOptions({ title: 'REGISTRAR PONTO' });
-  }, []);
-
   const greetings = () => {
     return `Olá ${'Maria'}!`;
   };
@@ -43,8 +36,8 @@ export default function RegistryScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{fontSize: 25, fontWeight: 'bold'}}>{greetings()}</Text>
-      <Text style={{fontSize: 20, fontWeight: 'bold'}}>Registre aqui os seus horários:</Text>
+      <Text style={{ fontSize: 25, fontWeight: 'bold' }}>{greetings()}</Text>
+      <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Registre aqui os seus horários:</Text>
 
       <View style={styles.registryContainer}>
         <ModalConfirmation
