@@ -1,5 +1,6 @@
-import React, { useState }  from 'react';
+import React, { useContext }  from 'react';
 import { Ionicons } from '@expo/vector-icons';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator} from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -8,6 +9,7 @@ import LoginScreen from './src/pages/LoginScreen';
 import RegistryScreen from './src/pages/RegistryScreen';
 import ShowScreen from './src/pages/ShowScreen';
 import DeviceActivationScreen from './src/pages/DeviceActivationScreen';
+import AuthContext, { AuthContextProvider } from './src/context/AuthContext';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -42,21 +44,28 @@ const renderProtectedContent = () => {
   )
 }
 
-const renderLoginScreen = (setAuthenticated) => {
+const renderLoginScreen = () => {
   return (
     <Stack.Navigator tabBarShowLabel={false} screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="LoginScreen" children={() => <LoginScreen setAuthenticated={setAuthenticated} />} />
+      <Stack.Screen name="LoginScreen" component={LoginScreen} />
     </Stack.Navigator>
   )
 }
 
-export default function App() {
-  // TODO: Get from context
-  const [authenticated, setAuthenticated] = useState(false);
+const Routes = () => {
+  const { authenticated } = useContext(AuthContext);
 
   return (
     <NavigationContainer>
-      {authenticated ? renderProtectedContent() : renderLoginScreen(setAuthenticated)}
+      {authenticated ? renderProtectedContent() : renderLoginScreen()}
     </NavigationContainer>
+  )
+}
+
+export default function App() {
+  return (
+    <AuthContextProvider>
+      <Routes />
+    </AuthContextProvider>
   );
 }
