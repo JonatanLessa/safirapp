@@ -25,7 +25,6 @@ export default function RegistryScreen() {
   }
 
   const addDate = (type) => {
-    console.log(type);
     const db = getDatabase();
     const reference = ref(db, 'registroPonto');
     push(reference, {

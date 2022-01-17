@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  Button,
   Image,
   SafeAreaView,
   StyleSheet,
@@ -13,7 +14,7 @@ import imgStyle from '../../styles/imgStyle';
 
 import appLogo from '../../../assets/safir-mobile2.png';
 
-export default function LoginScreen() {
+export default function LoginScreen(props) {
   const [cpf, setCpf] = useState(null);
 
   return (
@@ -27,6 +28,11 @@ export default function LoginScreen() {
           keyboardType="numeric"
           style={styles.input}
           value={cpf}
+        />
+
+        <Button
+          title="Entrar"
+          onPress={() => props.setAuthenticated(true)}
         />
       </View>
     </SafeAreaView>
