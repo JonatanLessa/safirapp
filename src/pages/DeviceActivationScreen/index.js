@@ -12,20 +12,19 @@ import { Button } from 'react-native-elements/dist/buttons/Button';
 import app from '../../config/firebaseconfig';
 import { getDatabase, ref, set, onValue } from 'firebase/database';
 //import init from 'react_native_mqtt';
-//import uuid from 'react-native-uuid';
 
 import styles from '../../styles/styleShowScreen';
 import bs from '../../styles/button';
 import waterPump from '../../../assets/water-pump01.png'; 
 import sprinkler from '../../../assets/sprinkler.png';
 import imgStyle from '../../styles/imgStyle';
+import { async } from '@firebase/util';
 
 
 export default function DeviceActivationScreen() {
     const navigation = useNavigation();
     const [state, setState] = useState();
     const [read, setRead] = useState(); //carrega o valor do firebase
-    //const [enabled, setEnabled] = useState(false);
 
     useEffect (() => {
         navigation.setOptions({ title: 'ATIVAÇÃO DE DISPOSITIVOS' });
@@ -59,8 +58,7 @@ export default function DeviceActivationScreen() {
         const reference = ref(db, type);
             set(reference, {
                 "estado" : state
-            });
-        console.log("addState");
+            });      
     }
     
   return (
@@ -79,8 +77,7 @@ export default function DeviceActivationScreen() {
                         buttonStyle={bs.buttonBack}
                         title="ATIVAR "
                         onPress={() => {
-                            addStateDevice("bombaDAgua")
-                            //setEnabled(true)
+                            addStateDevice("bombaDAgua")                            
                         }}
                     />                
                 </View>
