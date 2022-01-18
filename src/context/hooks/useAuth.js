@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getDatabase, ref, set } from 'firebase/database'
+import { getDatabase, ref, update } from 'firebase/database'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function useAuth() {
@@ -33,7 +33,7 @@ export default function useAuth() {
 
     const database = getDatabase();
     const currentUserRef = ref(database, `users/${cpf}`);
-    set(currentUserRef, { 'cpf': cpf });
+    update(currentUserRef, { 'cpf': cpf });
 
     setCurrentUser(cpf)
       .then(() => setAuthenticated(true))
