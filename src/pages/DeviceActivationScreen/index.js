@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 
 import app from '../../config/firebaseconfig';
-import { getDatabase, ref, set, push } from 'firebase/database';
+import { getDatabase, ref, set, onValue } from 'firebase/database';
 //import init from 'react_native_mqtt';
 //import uuid from 'react-native-uuid';
 
@@ -19,27 +19,43 @@ import bs from '../../styles/button';
 import waterPump from '../../../assets/water-pump01.png'; 
 import sprinkler from '../../../assets/sprinkler.png';
 import imgStyle from '../../styles/imgStyle'; 
+import { async } from '@firebase/util';
 
 
 export default function DeviceActivationScreen() {
     const navigation = useNavigation();
-  
-    useEffect (()=> {
-        navigation.setOptions({ title: 'ATIVAÇÃO DE DISPOSITIVOS' });
-    },[]);
-
-    useEffect (()=> {
-	    setState(0);
-	},[])
-
     const [state, setState] = useState();
 
-    const estate = () => {
+    useEffect (()=> {
+        navigation.setOptions({ title: 'ATIVAÇÃO DE DISPOSITIVOS' });
+    },[]);   
+
+    useEffect (()=> {
+        getDataFromService();
+        return()=> {
+            setState({});
+        };
+    },[]);  
+
+    const fState = () => {
         if( state == 0 ) {
             setState(1);
         } else {
             setState(0);
         }
+    }
+
+    const getDataFromService = () => {
+        const db = getDatabase();
+        const reference = ref(db, 'bombaDAgua');
+    
+        onValue(reference, (snapshot) => {
+    
+        console.log(snapshot.val().estado); 
+        console.log("---------------");
+        setState(snapshot.val().estado);    
+        //return x = snapshot.val().estado;    
+        });
     }
   
     const addStateDevice = (type) => {
@@ -67,9 +83,11 @@ export default function DeviceActivationScreen() {
                     <Button
                         buttonStyle={bs.buttonBack}
                         title="ATIVAR "
+                        //onConfirm = {()=> getDataFromService()}
                         onPress={() => {
-                            estate();
                             addStateDevice("bombaDAgua")
+                            fState()
+                            //addStateDevice("bombaDAgua")
                         }}
                     />                
                 </View>
