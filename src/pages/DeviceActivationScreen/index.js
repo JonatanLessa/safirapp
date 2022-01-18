@@ -18,54 +18,49 @@ import styles from '../../styles/styleShowScreen';
 import bs from '../../styles/button';
 import waterPump from '../../../assets/water-pump01.png'; 
 import sprinkler from '../../../assets/sprinkler.png';
-import imgStyle from '../../styles/imgStyle'; 
-import { async } from '@firebase/util';
+import imgStyle from '../../styles/imgStyle';
 
 
 export default function DeviceActivationScreen() {
     const navigation = useNavigation();
     const [state, setState] = useState();
+    const [read, setRead] = useState(); //carrega o valor do firebase
+    //const [enabled, setEnabled] = useState(false);
 
-    useEffect (()=> {
+    useEffect (() => {
         navigation.setOptions({ title: 'ATIVAÇÃO DE DISPOSITIVOS' });
-    },[]);   
-
-    useEffect (()=> {
         getDataFromService();
-        return()=> {
-            setState({});
+        return () => {
+            setRead({});
         };
     },[]);  
 
-    const fState = () => {
-        if( state == 0 ) {
+    useEffect (() => {
+        if( read == 0 ) {
             setState(1);
         } else {
             setState(0);
         }
-    }
+    },[read]);    
 
     const getDataFromService = () => {
         const db = getDatabase();
         const reference = ref(db, 'bombaDAgua');
     
-        onValue(reference, (snapshot) => {
-    
-        console.log(snapshot.val().estado); 
-        console.log("---------------");
-        setState(snapshot.val().estado);    
-        //return x = snapshot.val().estado;    
-        });
+        onValue(reference, (snapshot) => {      
+            setRead(snapshot.val().estado);       
+        });   
     }
   
     const addStateDevice = (type) => {
-    console.log(type);
-    console.log(state);
-    const db = getDatabase();
-    const reference = ref(db, type);
-        set(reference, {
-            "estado" : state
-        });
+        console.log(type);
+        console.log(state);
+        const db = getDatabase();
+        const reference = ref(db, type);
+            set(reference, {
+                "estado" : state
+            });
+        console.log("addState");
     }
     
   return (
@@ -83,11 +78,9 @@ export default function DeviceActivationScreen() {
                     <Button
                         buttonStyle={bs.buttonBack}
                         title="ATIVAR "
-                        //onConfirm = {()=> getDataFromService()}
                         onPress={() => {
                             addStateDevice("bombaDAgua")
-                            fState()
-                            //addStateDevice("bombaDAgua")
+                            //setEnabled(true)
                         }}
                     />                
                 </View>
