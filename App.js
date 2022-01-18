@@ -1,5 +1,5 @@
 import React, { useContext }  from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -14,7 +14,23 @@ import AuthContext, { AuthContextProvider } from './src/context/AuthContext';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-const renderProtectedContent = () => {
+const LogoutButton = () => {
+  const { handleLogout } = useContext(AuthContext);
+
+  return (
+    <MaterialIcons.Button
+      name="logout"
+      size={20}
+      iconStyle={{marginLeft: 15}}
+      backgroundColor="rgba(0, 0, 0, 0)"
+      onPress={handleLogout}
+    />
+  )
+}
+
+const ProtectedRoutes = () => {
+  const logoutButtonOptions = { headerRight: () => <LogoutButton /> }
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -37,14 +53,14 @@ const renderProtectedContent = () => {
           tabBarInactiveTintColor: '#000',
       })}
     >
-      <Tab.Screen name="Registro" component={RegistryScreen} />
-      <Tab.Screen name="Relatório" component={ShowScreen} />
-      <Tab.Screen name="Dispositivos" component={DeviceActivationScreen} />
+      <Tab.Screen name="Registro" component={RegistryScreen} options={logoutButtonOptions} />
+      <Tab.Screen name="Relatório" component={ShowScreen} options={logoutButtonOptions} />
+      <Tab.Screen name="Dispositivos" component={DeviceActivationScreen} options={logoutButtonOptions} />
     </Tab.Navigator>
   )
 }
 
-const renderLoginScreen = () => {
+const LoginRoute = () => {
   return (
     <Stack.Navigator tabBarShowLabel={false} screenOptions={{ headerShown: false }}>
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
@@ -57,7 +73,7 @@ const Routes = () => {
 
   return (
     <NavigationContainer>
-      {authenticated ? renderProtectedContent() : renderLoginScreen()}
+      {authenticated ? <ProtectedRoutes /> : <LoginRoute />}
     </NavigationContainer>
   )
 }
