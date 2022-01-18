@@ -9,6 +9,7 @@ const AuthContextProvider = ({ children }) => {
     loading,
     handleLogin,
     handleLogout,
+    getCurrentUser,
   } = useAuth()
 
   return (
@@ -18,6 +19,7 @@ const AuthContextProvider = ({ children }) => {
         loading,
         handleLogin,
         handleLogout,
+        getCurrentUser,
       }}
     >
       {children}

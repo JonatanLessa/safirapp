@@ -52,5 +52,6 @@ export default function useAuth() {
     loading,
     handleLogin,
     handleLogout,
+    getCurrentUser,
   }
 }

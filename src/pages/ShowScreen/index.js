@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -12,6 +12,7 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import styles from '../../styles/styleShowScreen';
 import ButtonDataPicker from '../../components/ButtonDataPicker';
 import ButtonRegisterSearch from '../../components/ButtonRegisterSeach';
+import AuthContext from '../../context/AuthContext';
 
 export default function ShowScreen() {
   //armazena a data selecionada pelo componente DataPicker
@@ -21,9 +22,20 @@ export default function ShowScreen() {
   //armazena dados dos objetos com registro na saída
   const [dataExit, setDataExit] = useState([]);
   //Resgata dos dados do Realtime Database
+
+  const [currentUser, setCurrentUser] = useState("");
+
+  const { getCurrentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    getCurrentUser().then(cpf => {
+      setCurrentUser(cpf);
+    });
+  }, []);
+
   const getDataFromService = () => {
     const db = getDatabase();
-    const reference = ref(db, 'registroPonto');
+    const reference = ref(db, `users/${currentUser}/registro_ponto`);
 
     onValue(reference, (snapshot) => {
       const entryArray = [];
