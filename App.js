@@ -1,5 +1,6 @@
 import React, { useContext }  from 'react';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import Toast from 'react-native-toast-message';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -25,6 +26,7 @@ const LogoutButton = () => {
       size={20}
       iconStyle={{marginLeft: 15}}
       backgroundColor="rgba(0, 0, 0, 0)"
+      color="#000"
       onPress={handleLogout}
     />
   )
@@ -82,8 +84,12 @@ const Routes = () => {
 
 export default function App() {
   return (
-    <AuthContextProvider>
-      <Routes />
-    </AuthContextProvider>
+    <>
+      <AuthContextProvider>
+        <Routes />
+      </AuthContextProvider>
+
+      <Toast />
+    </>
   );
 }

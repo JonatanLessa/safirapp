@@ -16,10 +16,25 @@ import appLogo from '../../../assets/safir-mobile2.png';
 
 import AuthContext from '../../context/AuthContext';
 
+import { validate } from 'gerador-validador-cpf';
+import Toast from 'react-native-toast-message';
+
 export default function LoginScreen({ navigation }) {
   const [cpf, setCpf] = useState(null);
 
   const { handleLogin } = useContext(AuthContext)
+
+  const onLogin = () => {
+    if (validate(cpf)) {
+      handleLogin(navigation, cpf)
+    } else {
+      Toast.show({
+        type: 'error',
+        text1: 'CPF Inválido',
+        position: 'bottom'
+      });
+    }
+  }
 
   return (
     <SafeAreaView style={layoutStyles.container}>
@@ -36,7 +51,7 @@ export default function LoginScreen({ navigation }) {
 
         <Button
           title="Entrar"
-          onPress={() => handleLogin(navigation, cpf)}
+          onPress={onLogin}
         />
       </View>
     </SafeAreaView>

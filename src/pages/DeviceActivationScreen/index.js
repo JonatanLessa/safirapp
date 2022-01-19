@@ -51,13 +51,13 @@ export default function DeviceActivationScreen() {
         const reference = ref(db, 'bombaDAgua');
 
         onValue(reference, (snapshot) => {
-            setRead(snapshot.val().estado);
+            if (snapshot.val()) {
+                setRead(snapshot.val().estado);
+            }
         });
     }
 
     const addStateDevice = (type) => {
-        console.log(type);
-        console.log(state);
         const db = getDatabase();
         const reference = ref(db, type);
         set(reference, {
