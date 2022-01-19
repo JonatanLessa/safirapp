@@ -1,6 +1,17 @@
 import { StyleSheet } from 'react-native';
 
-export default StyleSheet.create({
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingBottom: 20,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+  },
+  viewDeviceActivationScreen: {
+    marginTop: 10,
+    flexDirection: "column",
+    marginLeft: 50,
+  },
   logo: {
     width: 250,
     resizeMode: 'contain',
@@ -18,3 +29,5 @@ export default StyleSheet.create({
     resizeMode: 'stretch', 
   },
 });
+
+export default styles;
