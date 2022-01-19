@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { withBadge } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   container: {

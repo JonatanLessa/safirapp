@@ -1,10 +1,9 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+
 import btn from '../styles/button'
 
-
 export default function ButtonRegisterSearch(props)  {
- 
   return (
     <View style={styles.viewCheck}>
       <View style={btn.buttonCheck}>
@@ -19,7 +18,7 @@ export default function ButtonRegisterSearch(props)  {
       </View>
     </View>    
   );  
-};
+}
 
 const styles = StyleSheet.create({
     viewCheck: {

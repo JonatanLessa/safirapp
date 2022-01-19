@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Text, View, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import moment from 'moment';
 
-import app from '../../config/firebaseconfig';
-import { getDatabase, ref, set, push } from 'firebase/database';
+import { getDatabase, ref, push } from 'firebase/database';
 
 import styles from '../../styles/style';
 
-import ModalConfirmation from '../../Components/ModalConfirmation';
+import ModalConfirmation from '../../components/ModalConfirmation';
+import AuthContext from '../../context/AuthContext';
 
 export default function RegistryScreen() {
-
   const greetings = () => {
-    return `Olá ${'Maria'}!`;
+    return `Olá ${currentUser}!`;
   };
 
   const [date, setDate] = useState('');
   const [hour, setHour] = useState('');
   const [visibleModalEntry, setVisibleModalEntry] = useState(false);
   const [visibleModalExit, setVisibleModalExit] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
+
+  const { getCurrentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    getCurrentUser().then(cpf => {
+      setCurrentUser(cpf);
+    });
+  }, []);
 
   const addData = () => {
     setDate(moment().format('DD-MM-YYYY').toString());
@@ -27,9 +35,8 @@ export default function RegistryScreen() {
   }
 
   const addDate = (type) => {
-    console.log(type);
     const db = getDatabase();
-    const reference = ref(db, 'registroPonto');
+    const reference = ref(db, `users/${currentUser}/registro_ponto`);
     push(reference, {
       [type]: date,
       "hour": hour

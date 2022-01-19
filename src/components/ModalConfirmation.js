@@ -1,12 +1,10 @@
 import React from "react";
-import { Text, View, Button, StyleSheet, TouchableOpacity, Modal, Image } from 'react-native';
+import { Text, View, Button, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import btn from '../styles/button'
-import styles2 from '../styles/imgStyle'
 // import Entry from '../../../assets/entry.png'
 // import Exit from '../../../assets/exit.png'
 
 export default function ModalConfirmation(props) {
-
     const { visible, setVisible, onConfirm } = props
 
     return (
@@ -16,7 +14,6 @@ export default function ModalConfirmation(props) {
                 animationType="fade"
                 transparent={true}
                 visible={visible}
-                style={{}}
             >
                 <View style={styles.viewText}>
                     <Text style={styles.textModal}> CONFIRMA REGISTRO PARA {props.valueDate} ÀS {props.valueHour}</Text>
