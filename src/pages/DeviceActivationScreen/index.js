@@ -15,7 +15,7 @@ import { getDatabase, ref, set, onValue } from 'firebase/database';
 
 import styles from '../../styles/styleShowScreen';
 import bs from '../../styles/button';
-import waterPump from '../../../assets/water-pump01.png'; 
+import waterPump from '../../../assets/water-pump01.png';
 import sprinkler from '../../../assets/sprinkler.png';
 import imgStyle from '../../styles/imgStyle';
 import { async } from '@firebase/util';
@@ -81,8 +81,6 @@ export default function DeviceActivationScreen() {
                         }}
                     />                
                 </View>
-            </View> 
-            <View style={{ alignItems: "flex-start", flexDirection: "column",  }}>
                 <View>
                     <Text> REGISTRO SETOR 01: </Text> 
                 </View>                     
@@ -97,8 +95,6 @@ export default function DeviceActivationScreen() {
                         }}
                     />
                 </View>
-            </View> 
-            <View style={{ alignItems: "flex-start", flexDirection: "column",  }}>
                 <View>
                     <Text> REGISTRO SETOR 02: </Text> 
                 </View>                     
