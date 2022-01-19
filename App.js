@@ -11,6 +11,8 @@ import ShowScreen from './src/pages/ShowScreen';
 import DeviceActivationScreen from './src/pages/DeviceActivationScreen';
 import AuthContext, { AuthContextProvider } from './src/context/AuthContext';
 
+import _app from './src/config/firebaseconfig'
+
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
