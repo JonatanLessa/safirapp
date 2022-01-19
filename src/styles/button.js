@@ -74,12 +74,21 @@ const styleButton = StyleSheet.create({
     margin: 5,
     borderRadius: 5
   },
-  buttonShowScreen: {
-    marginTop: 25,
-    backgroundColor: '#8CDB94',
-    borderColor: '#999',
-    borderWidth: 1,
-    width: 280,
+  btnDateShowScreen: {
+    marginTop: 10,
+    backgroundColor: '#77787C',
+    borderColor: '#E5E5E5',
+    borderWidth: 2,
+    width: 173,
+    height: 50,
+    borderRadius: 5,
+  },
+  btnSearchShowScreen: {
+    marginTop: 10,
+    backgroundColor: '#72CBF5',
+    borderColor: '#E5E5E5',
+    borderWidth: 2,
+    width: 100,
     height: 50,
     borderRadius: 5,
   },
@@ -93,7 +102,7 @@ const styleButton = StyleSheet.create({
   buttonCheck: {
     flexDirection: 'column',
     justifyContent: 'center',
-    width: '70%',
+    width: '100%',
   },
 });
 
