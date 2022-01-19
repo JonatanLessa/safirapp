@@ -3,7 +3,6 @@ import { Text, View, TouchableOpacity, StyleSheet, Platform } from "react-native
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 import btn from '../styles/button'
-import st from '../styles/styleShowScreen'
 
 export default function ButtonDataPicker(props) {
     const [date, setDate] = useState(new Date());
@@ -22,7 +21,7 @@ export default function ButtonDataPicker(props) {
 
     return (
         <View style={styles.viewCheck}>
-            <View style={st.viewDate}>
+            <View style={styles.viewDate}>
                 <Text style={styles.textCheck}>{props.value}</Text>
                 {show && (
                     <DateTimePicker
@@ -35,9 +34,9 @@ export default function ButtonDataPicker(props) {
                     />
                 )}
             </View>
-            <View style={btn.buttonCheck}>
+            <View style={btn.buttonDateSelect}>
                 <TouchableOpacity
-                    style={btn.btnDateShowScreen}
+                    style={btn.buttonDateShow}
                     onPress={() => setShow(true)}>
                     <Text style={{ textAlign: 'center', marginTop: 15, color: '#fff', fontWeight: 'bold' }}>
                         {props.title}
@@ -54,9 +53,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
     textCheck: {
         fontWeight: 'bold',
         fontSize: 20,
+    },
+    viewDate: {
+        flexDirection: 'row',
+        backgroundColor: '#FFF',
+        borderWidth: 2,
+        borderColor: '#E5E5E5',
+        width: 282,
+        height: 50,
+        alignItems: 'center',
+        borderRadius: 5,
+        paddingHorizontal: 10,
     },
 });
