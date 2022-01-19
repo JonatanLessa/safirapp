@@ -9,8 +9,7 @@ import {
 import { getDatabase, ref, onValue } from 'firebase/database';
 
 import styles from '../../styles/styleShowScreen';
-import ButtonDataPicker from '../../components/ButtonDataPicker';
-import ButtonRegisterSearch from '../../components/ButtonRegisterSeach';
+import { ButtonDataPicker, ButtonRegisterSearch } from '../../components';
 import AuthContext from '../../context/AuthContext';
 
 export default function ShowScreen() {
@@ -102,7 +101,7 @@ export default function ShowScreen() {
       <Text style={{ fontWeight: 'bold', margin: 10, marginTop: 50 }}>
         DATA DA ENTRADA/SAIDA
       </Text>
-      <View style={styles.viewCheck}>
+      <View style={styles.viewSelectDate}>
         <ButtonDataPicker
           title={"SELECIONAR DATA"}
           value={date}
@@ -111,7 +110,7 @@ export default function ShowScreen() {
           }}
         />
       </View>
-      <View style={styles.viewCheck2}>
+      <View style={styles.viewResearch}>
         <ButtonRegisterSearch
           title={"PESQUISAR"}
           value={''}
@@ -123,7 +122,7 @@ export default function ShowScreen() {
       <Text style={{ fontWeight: 'bold', margin: 10, marginTop: 10 }}>
         RESULTADO DA PESQUISA
       </Text>
-      <View style={styles.viewReport}>
+      <View style={styles.viewReport1}>
         <FlatList
           data={dataEntry}
           renderItem={(obj) => {

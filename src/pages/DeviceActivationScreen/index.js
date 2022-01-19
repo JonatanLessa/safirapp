@@ -10,11 +10,10 @@ import { Button } from 'react-native-elements/dist/buttons/Button';
 
 import { getDatabase, ref, set, onValue } from 'firebase/database';
 
-import styles from '../../styles/styleShowScreen';
+import styles from '../../styles/styleDeviceActivationScreen';
 import bs from '../../styles/button';
-import waterPump from '../../../assets/water-pump01.png';
-import sprinkler from '../../../assets/sprinkler.png';
-import imgStyle from '../../styles/imgStyle';
+import waterPump from '../../assets/water-pump01.png';
+import sprinkler from '../../assets/sprinkler.png';
 
 export default function DeviceActivationScreen() {
     const navigation = useNavigation();
@@ -73,7 +72,7 @@ export default function DeviceActivationScreen() {
                         <Text style={{ fontSize: 11, fontWeight: 'bold' }}> BOMBA D'ÁGUA: </Text>
                     </View>
                     <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -55 }}>
-                        <Image source={waterPump} style={imgStyle.waterPump} />
+                        <Image source={waterPump} style={styles.waterPump} />
                         <Button
                             buttonStyle={deviceOn1 ? bs.buttonDeviceOn : bs.buttonDeviceOff}
                             title={deviceOn1 ? 'ON' : 'OFF'}
@@ -89,7 +88,7 @@ export default function DeviceActivationScreen() {
                         <Text style={{ fontSize: 11, fontWeight: 'bold' }}> REGISTRO SETOR 01: </Text>
                     </View>
                     <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -55 }}>
-                        <Image source={sprinkler} style={imgStyle.waterPump} />
+                        <Image source={sprinkler} style={styles.waterPump} />
                         <Button
                             buttonStyle={deviceOn2 ? bs.buttonDeviceOn : bs.buttonDeviceOff}
                             title={deviceOn2 ? 'ON' : 'OFF'}
@@ -105,7 +104,7 @@ export default function DeviceActivationScreen() {
                         <Text style={{ fontSize: 11, fontWeight: 'bold' }}> REGISTRO SETOR 02: </Text>
                     </View>
                     <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -55 }}>
-                        <Image source={sprinkler} style={imgStyle.waterPump} />
+                        <Image source={sprinkler} style={styles.waterPump} />
                         <Button
                             buttonStyle={deviceOn3 ? bs.buttonDeviceOn : bs.buttonDeviceOff}
                             title={deviceOn3 ? 'ON' : 'OFF'}

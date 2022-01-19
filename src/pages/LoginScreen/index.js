@@ -1,18 +1,17 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Button,
   Image,
   SafeAreaView,
-  StyleSheet,
   Text,
   TextInput,
   View,
 } from 'react-native';
 
-import layoutStyles from '../../styles/style';
-import imgStyle from '../../styles/imgStyle';
+import layoutStyles from '../../styles/styleLoginScreen';
+import imgStyle from '../../styles/styleLoginScreen';
 
-import appLogo from '../../../assets/safir-mobile2.png';
+import appLogo from '../../assets/safir-mobile2.png';
 
 import AuthContext from '../../context/AuthContext';
 
@@ -38,39 +37,20 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <SafeAreaView style={layoutStyles.container}>
-      <View style={styles.centerLayout}>
+      <View style={layoutStyles.centerLayout}>
         <Image source={appLogo} style={imgStyle.logo} />
-
         <Text> Insira seu CPF para continuar: </Text>
         <TextInput
           onChangeText={setCpf}
           keyboardType="numeric"
-          style={styles.input}
+          style={layoutStyles.input}
           value={cpf}
         />
-
         <Button
           title="Entrar"
           onPress={onLogin}
         />
       </View>
     </SafeAreaView>
-  )
+  );
 }
-
-const styles = StyleSheet.create({
-  input: {
-    width: 300,
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: '#FFF',
-  },
-  centerLayout: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 50,
-  }
-});

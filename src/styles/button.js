@@ -1,45 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-const styleButton = StyleSheet.create({
-  button: {
-    padding: 10,
-    backgroundColor: '#8CDB94',
-    borderColor: '#999',
-    borderWidth: 1,
-    borderRadius: 5,
-    width: 300,
-    margin: 10,
-    marginTop: 20,
-    color: '#8CDB94',
-  },
-  buttonBack: {
-    backgroundColor: '#888888',
-    padding: 10,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#000',
-    width: 100,
-    margin: 70,
-  },
-  buttonBack2: {
-    backgroundColor: '#888888',
-    padding: 10,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#000',
-    width: 100,
-    marginTop: 200,
-  },
-  buttonDeviceActivation: {
-    backgroundColor: '#888888',
-    padding: 10,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#000',
-    width: 100,
-    marginTop: 200,
-  },
-  buttonDeviceOn: {
+const styleButton = StyleSheet.create({ 
+  buttonDeviceOn: { //DeviceActivationScreen
     backgroundColor: '#8CDB94',
     padding: 15,
     borderRadius: 100,
@@ -52,7 +14,7 @@ const styleButton = StyleSheet.create({
     width: 80,
     margin: 80,
   },
-  buttonDeviceOff: {
+  buttonDeviceOff: { //DeviceActivationScreen
     backgroundColor: '#FD0201',
     padding: 15,
     borderRadius: 100,
@@ -65,7 +27,7 @@ const styleButton = StyleSheet.create({
     width: 80,
     margin: 80,
   },
-  buttonRegistryEntry: {
+  buttonRegistry: { // ButtonModalConfirmation
     width: 150,
     height: 220,
     backgroundColor: '#8CDB94',
@@ -74,7 +36,7 @@ const styleButton = StyleSheet.create({
     margin: 5,
     borderRadius: 5
   },
-  btnDateShowScreen: {
+  buttonDateShow: { // ButtonDataPicker
     marginTop: 10,
     backgroundColor: '#77787C',
     borderColor: '#E5E5E5',
@@ -83,7 +45,17 @@ const styleButton = StyleSheet.create({
     height: 50,
     borderRadius: 5,
   },
-  btnSearchShowScreen: {
+  buttonDateSelect: { // ButtonDataPicker
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  buttonCheck: { //ButtonRegisterScreen
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  buttonSearchShowScreen: { //ButtonRegisterScreen
     marginTop: 10,
     backgroundColor: '#72CBF5',
     borderColor: '#E5E5E5',
@@ -91,19 +63,7 @@ const styleButton = StyleSheet.create({
     width: 100,
     height: 50,
     borderRadius: 5,
-  },
-  buttonStyle: {
-    marginTop: 25,
-    backgroundColor: '#8CDB94',
-    width: 280,
-    height: 50,
-    borderRadius: 5,
-  },
-  buttonCheck: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    width: '100%',
-  },
+  }, 
 });
 
 export default styleButton;

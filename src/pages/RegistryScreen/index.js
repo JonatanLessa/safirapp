@@ -5,9 +5,9 @@ import moment from 'moment';
 
 import { getDatabase, ref, push } from 'firebase/database';
 
-import styles from '../../styles/style';
+import styles from '../../styles/styleRegistryScreen';
 
-import ModalConfirmation from '../../components/ModalConfirmation';
+import { ModalConfirmation } from '../../components';
 import AuthContext from '../../context/AuthContext';
 
 export default function RegistryScreen() {
@@ -50,7 +50,7 @@ export default function RegistryScreen() {
       <Text style={{ fontSize: 25, fontWeight: 'bold' }}>{greetings()}</Text>
       <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Registre aqui os seus horários:</Text>
       <View>
-        <View style={styles.registryContainer}>
+        <View style={styles.viewModal}>
           <ModalConfirmation
             title={"ENTRADA"}
             valueDate={date}
@@ -76,7 +76,7 @@ export default function RegistryScreen() {
             }}
           />
         </View>
-        <View style={styles.registryContainer}>
+        <View style={styles.viewModal}>
           <ModalConfirmation
             title={"RETORNO"}
             valueDate={date}
