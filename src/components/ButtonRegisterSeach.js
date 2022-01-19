@@ -8,9 +8,9 @@ export default function ButtonRegisterSearch(props)  {
     <View style={styles.viewCheck}>
       <View style={btn.buttonCheck}>
         <TouchableOpacity  
-            style={btn.buttonShowScreen}
+            style={btn.btnSearchShowScreen}
             onPress={props.onPress} >
-            <Text style={{  textAlign: 'center', marginTop: 15, color: '#fff', fontWeight: 'bold'  }}>
+            <Text style={{  textAlign: 'center', marginTop: 15, color: '#555', fontWeight: 'bold'  }}>
                 {props.title}
             </Text>
         </TouchableOpacity>
@@ -18,7 +18,7 @@ export default function ButtonRegisterSearch(props)  {
       </View>
     </View>    
   );  
-}
+};
 
 const styles = StyleSheet.create({
     viewCheck: {

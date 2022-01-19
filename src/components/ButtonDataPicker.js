@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, StyleSheet, Platform } from "react-native
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 import btn from '../styles/button'
+import st from '../styles/styleShowScreen'
 
 export default function ButtonDataPicker(props) {
     const [date, setDate] = useState(new Date());
@@ -21,26 +22,28 @@ export default function ButtonDataPicker(props) {
 
     return (
         <View style={styles.viewCheck}>
+            <View style={st.viewDate}>
+                <Text style={styles.textCheck}>{props.value}</Text>
+                {show && (
+                    <DateTimePicker
+                        testID="dateTimePicker"
+                        value={date}
+                        mode={'date'}
+                        is24Hour={true}
+                        display="default"
+                        onChange={onChange}
+                    />
+                )}
+            </View>
             <View style={btn.buttonCheck}>
                 <TouchableOpacity
-                    style={btn.buttonShowScreen}
+                    style={btn.btnDateShowScreen}
                     onPress={() => setShow(true)}>
                     <Text style={{ textAlign: 'center', marginTop: 15, color: '#fff', fontWeight: 'bold' }}>
                         {props.title}
                     </Text>
                 </TouchableOpacity>
-            </View>
-            <Text style={styles.textCheck}>{props.value}</Text>
-            {show && (
-                <DateTimePicker
-                    testID="dateTimePicker"
-                    value={date}
-                    mode={'date'}
-                    is24Hour={true}
-                    display="default"
-                    onChange={onChange}
-                />
-            )}
+            </View>           
         </View>
     );
 }

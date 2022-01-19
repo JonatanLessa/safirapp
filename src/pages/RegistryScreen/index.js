@@ -17,7 +17,9 @@ export default function RegistryScreen() {
 
   const [date, setDate] = useState('');
   const [hour, setHour] = useState('');
-  const [visibleModalEntry, setVisibleModalEntry] = useState(false);
+  const [visibleModalEntry, setVisibleModalEntry] = useState(false);  
+  const [visibleModalPause, setVisibleModalPause] = useState(false);
+  const [visibleModalReturn, setVisibleModalReturn] = useState(false);
   const [visibleModalExit, setVisibleModalExit] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
 
@@ -47,32 +49,59 @@ export default function RegistryScreen() {
     <SafeAreaView style={styles.container}>
       <Text style={{ fontSize: 25, fontWeight: 'bold' }}>{greetings()}</Text>
       <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Registre aqui os seus horários:</Text>
-
-      <View style={styles.registryContainer}>
-        <ModalConfirmation
-          title={"ENTRADA"}
-          valueDate={date}
-          valueHour={hour}
-          visible={visibleModalEntry}
-          setVisible={setVisibleModalEntry}
-          onConfirm={() => addDate("dateEntry")}
-          onPress={() => {
-            setVisibleModalEntry(true)
-            addData()
-          }}
-        />
-        <ModalConfirmation
-          title={"SAÍDA"}
-          valueDate={date}
-          valueHour={hour}
-          visible={visibleModalExit}
-          setVisible={setVisibleModalExit}
-          onConfirm={() => addDate("dateExit")}
-          onPress={() => {
-            setVisibleModalExit(true)
-            addData()
-          }}
-        />
+      <View>
+        <View style={styles.registryContainer}>
+          <ModalConfirmation
+            title={"ENTRADA"}
+            valueDate={date}
+            valueHour={hour}
+            visible={visibleModalEntry}
+            setVisible={setVisibleModalEntry}
+            onConfirm={() => addDate("dateEntry")}
+            onPress={() => {
+              setVisibleModalEntry(true)
+              addData()
+            }}
+          />
+          <ModalConfirmation
+            title={"PAUSA"}
+            valueDate={date}
+            valueHour={hour}
+            visible={visibleModalPause}
+            setVisible={setVisibleModalPause}
+            onConfirm={() => addDate("datePause")}
+            onPress={() => {
+              setVisibleModalPause(true)
+              addData()
+            }}
+          />
+        </View>
+        <View style={styles.registryContainer}>
+          <ModalConfirmation
+            title={"RETORNO"}
+            valueDate={date}
+            valueHour={hour}
+            visible={visibleModalReturn}
+            setVisible={setVisibleModalReturn}
+            onConfirm={() => addDate("dateReturn")}
+            onPress={() => {
+              setVisibleModalReturn(true)
+              addData()
+            }}
+          />
+          <ModalConfirmation
+            title={"SAÍDA"}
+            valueDate={date}
+            valueHour={hour}
+            visible={visibleModalExit}
+            setVisible={setVisibleModalExit}
+            onConfirm={() => addDate("dateExit")}
+            onPress={() => {
+              setVisibleModalExit(true)
+              addData()
+            }}
+          />
+        </View>
       </View>
       <StatusBar style="auto" />
     </SafeAreaView>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { 
-    View, 
-    Text, 
+import {
+    View,
+    Text,
     Image,
-    SafeAreaView, 
+    SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
@@ -21,29 +21,38 @@ export default function DeviceActivationScreen() {
     const [state, setState] = useState();
     const [read, setRead] = useState();
 
-    useEffect (() => {
+    const [deviceOn1, setDeviceOn1] = useState(false)
+    const toggleDeviceOn1 = () => setDeviceOn1(!deviceOn1)
+
+    const [deviceOn2, setDeviceOn2] = useState(false)
+    const toggleDeviceOn2 = () => setDeviceOn2(!deviceOn2)
+
+    const [deviceOn3, setDeviceOn3] = useState(false)
+    const toggleDeviceOn3 = () => setDeviceOn3(!deviceOn3)
+
+    useEffect(() => {
         navigation.setOptions({ title: 'ATIVAÇÃO DE DISPOSITIVOS' });
         getDataFromService();
         return () => {
             setRead({});
         };
-    },[]);  
+    }, []);
 
-    useEffect (() => {
-        if( read == 0 ) {
+    useEffect(() => {
+        if (read == 0) {
             setState(1);
         } else {
             setState(0);
         }
-    },[read]);    
+    }, [read]);
 
     const getDataFromService = () => {
         const db = getDatabase();
         const reference = ref(db, 'bombaDAgua');
 
-        onValue(reference, (snapshot) => {      
-            setRead(snapshot.val().estado);       
-        });   
+        onValue(reference, (snapshot) => {
+            setRead(snapshot.val().estado);
+        });
     }
 
     const addStateDevice = (type) => {
@@ -52,69 +61,62 @@ export default function DeviceActivationScreen() {
         const db = getDatabase();
         const reference = ref(db, type);
         set(reference, {
-            "estado" : state
-        });      
+            "estado": state
+        });
     }
 
     return (
         <SafeAreaView style={styles.container}>
-            <View>
-                <Text style={{  fontWeight: 'bold', marginTop: 180,}}> ESCOLHA O DISPOSITIVO: </Text>                
-            </View>
-            <View style={styles.viewDeviceActivationScreen}>           
-                <View style={{ alignItems: "flex-start", flexDirection: "column", marginTop: 40 }}>
+            <View style={styles.viewDeviceActivationScreen}>
+                <View>
                     <View>
-                        <Text> BOMBA D'ÁGUA: </Text> 
-                    </View>                     
-                    <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -40  }}>             
-                        <Image source={waterPump} style={imgStyle.waterPump}/> 
-                        <Button
-                            buttonStyle={bs.buttonBack}
-                            title="ATIVAR "
-                            onPress={() => {
-                                addStateDevice("bombaDAgua")                            
-                            }}
-                        />                
+                        <Text style={{ fontSize: 11, fontWeight: 'bold' }}> BOMBA D'ÁGUA: </Text>
                     </View>
-                    <View>
-                        <Text> REGISTRO SETOR 01: </Text> 
-                    </View>                     
-                    <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -40  }}>             
-                        <Image source={sprinkler} style={imgStyle.waterPump}/> 
+                    <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -55 }}>
+                        <Image source={waterPump} style={imgStyle.waterPump} />
                         <Button
-                            buttonStyle={bs.buttonBack}
-                            title="ATIVAR "
+                            buttonStyle={deviceOn1 ? bs.buttonDeviceOn : bs.buttonDeviceOff}
+                            title={deviceOn1 ? 'ON' : 'OFF'}
                             onPress={() => {
-                                setState(true)
+                                addStateDevice("bombaDAgua")
+                                toggleDeviceOn1()
+                            }}
+                        />
+                    </View>
+                </View>
+                <View>
+                    <View>
+                        <Text style={{ fontSize: 11, fontWeight: 'bold' }}> REGISTRO SETOR 01: </Text>
+                    </View>
+                    <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -55 }}>
+                        <Image source={sprinkler} style={imgStyle.waterPump} />
+                        <Button
+                            buttonStyle={deviceOn2 ? bs.buttonDeviceOn : bs.buttonDeviceOff}
+                            title={deviceOn2 ? 'ON' : 'OFF'}
+                            onPress={() => {
                                 addStateDevice("registro01")
+                                toggleDeviceOn2()
                             }}
                         />
                     </View>
+                </View>
+                <View>
                     <View>
-                        <Text> REGISTRO SETOR 02: </Text> 
-                    </View>                     
-                    <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -40  }}>             
-                        <Image source={sprinkler} style={imgStyle.waterPump}/> 
+                        <Text style={{ fontSize: 11, fontWeight: 'bold' }}> REGISTRO SETOR 02: </Text>
+                    </View>
+                    <View style={{ alignItems: "center", flexDirection: "row", marginRight: 20, marginTop: -55 }}>
+                        <Image source={sprinkler} style={imgStyle.waterPump} />
                         <Button
-                            buttonStyle={bs.buttonBack}
-                            title="ATIVAR "
+                            buttonStyle={deviceOn3 ? bs.buttonDeviceOn : bs.buttonDeviceOff}
+                            title={deviceOn3 ? 'ON' : 'OFF'}
                             onPress={() => {
-                                setState(true)
                                 addStateDevice("registro02")
+                                toggleDeviceOn3()
                             }}
                         />
                     </View>
-                </View> 
-
-            </View>     
-            <View style={{ marginBottom: 200, marginTop: -150 }}>
-                <Button
-                    buttonStyle={bs.buttonBack2}
-                    title="VOLTAR "
-                    onPress={() => navigation.navigate('LoginScreen')}
-                />
-            </View>   
-
+                </View>
+            </View>
         </SafeAreaView>
     );
 }
