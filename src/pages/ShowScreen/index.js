@@ -18,6 +18,10 @@ export default function ShowScreen() {
   const [date, setDate] = useState('');
   //armazena dados dos objetos com registro na entrada
   const [dataEntry, setDataEntry] = useState([]);
+  //armazena dados dos objetos com registro na pausa
+  const [dataPause, setDataPause] = useState([]);
+  //armazena dados dos objetos com registro no retorno
+  const [dataReturn, setDataReturn] = useState([]);
   //armazena dados dos objetos com registro na saída
   const [dataExit, setDataExit] = useState([]);
   //Resgata dos dados do Realtime Database
@@ -38,6 +42,8 @@ export default function ShowScreen() {
 
     onValue(reference, (snapshot) => {
       const entryArray = [];
+      const pauseArray = [];
+      const returnArray = [];
       const exitArray = [];
       //Encontra objetos com a data de entrada e saída selecionada pelo DataPicker e add nos arrays
       snapshot.forEach(data => {
@@ -45,6 +51,24 @@ export default function ShowScreen() {
           entryArray.push({
             id: data.key,
             data: data.val().dateEntry,
+            hora: data.val().hour
+          });
+        }
+      });
+      snapshot.forEach(data => {
+        if (data.val().datePause == date) {
+          pauseArray.push({
+            id: data.key,
+            data: data.val().datePause,
+            hora: data.val().hour
+          });
+        }
+      });
+      snapshot.forEach(data => {
+        if (data.val().dateReturn == date) {
+          returnArray.push({
+            id: data.key,
+            data: data.val().dateReturn,
             hora: data.val().hour
           });
         }
@@ -58,7 +82,9 @@ export default function ShowScreen() {
           });
         }
       });
-      setDataEntry(entryArray);
+      setDataEntry(entryArray);      
+      setDataPause(pauseArray);
+      setDataReturn(returnArray);
       setDataExit(exitArray);
 
       alerta(entryArray.length, exitArray.length);
@@ -67,14 +93,14 @@ export default function ShowScreen() {
   //Alerta em caso de não registro na data
   const alerta = (entryArray, exitArray) => {
     if ((entryArray == 0) && (exitArray == 0)) {
-      Alert.alert("NÃO EXISTE REGISTRO PARA ESSA DATA! ")
+      Alert.alert("NÃO HÁ REGISTRO NESSA DATA!")
     }
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={{ fontWeight: 'bold', margin: 10, marginTop: 50 }}>
-        HORA DA ENTRADA/SAIDA
+        DATA DA ENTRADA/SAIDA
       </Text>
       <View style={styles.viewCheck}>
         <ButtonDataPicker
@@ -84,14 +110,19 @@ export default function ShowScreen() {
             setDate(selectedDate)
           }}
         />
+      </View>
+      <View style={styles.viewCheck2}>
         <ButtonRegisterSearch
-          title={"LISTAR REGISTROS"}
+          title={"PESQUISAR"}
           value={''}
           onPress={() => {
             getDataFromService()
           }}
         />
       </View>
+      <Text style={{ fontWeight: 'bold', margin: 10, marginTop: 10 }}>
+        RESULTADO DA PESQUISA
+      </Text>
       <View style={styles.viewReport}>
         <FlatList
           data={dataEntry}
@@ -105,7 +136,7 @@ export default function ShowScreen() {
             }
           }}
         />
-        <Text style={{ color: '#fff', fontWeight: 'bold' }}> ENTRADA </Text>
+        <Text style={{ color: '#FFF', fontWeight: 'bold' }}> ENTRADA </Text>
       </View>
       <View style={styles.viewReport2}>
         <FlatList
@@ -120,7 +151,37 @@ export default function ShowScreen() {
             }
           }}
         />
-        <Text style={{ color: '#fff', fontWeight: 'bold' }}> SAÍDA </Text>
+        <Text style={{ color: '#FFF', fontWeight: 'bold' }}> PAUSA </Text>
+      </View>
+      <View style={styles.viewReport3}>
+        <FlatList
+          data={dataEntry}
+          renderItem={(obj) => {
+            if (obj.item.data == date) {
+              return (
+                <Text style={{ fontWeight: 'bold' }}>
+                  {obj.item.data} às {obj.item.hora}
+                </Text>
+              )
+            }
+          }}
+        />
+        <Text style={{ color: '#FFF', fontWeight: 'bold' }}> RETORNO </Text>
+      </View>
+      <View style={styles.viewReport4}>
+        <FlatList
+          data={dataExit}
+          renderItem={(obj) => {
+            if (obj.item.data == date) {
+              return (
+                <Text style={{ fontWeight: 'bold' }}>
+                  {obj.item.data} às {obj.item.hora}
+                </Text>
+              )
+            }
+          }}
+        />
+        <Text style={{ color: '#FFF', fontWeight: 'bold' }}> SAÍDA </Text>
       </View>
     </SafeAreaView>
   );
