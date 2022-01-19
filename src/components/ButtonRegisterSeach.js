@@ -8,7 +8,7 @@ export default function ButtonRegisterSearch(props)  {
     <View style={styles.viewCheck}>
       <View style={btn.buttonCheck}>
         <TouchableOpacity  
-            style={btn.btnSearchShowScreen}
+            style={btn.buttonSearchShowScreen}
             onPress={props.onPress} >
             <Text style={{  textAlign: 'center', marginTop: 15, color: '#555', fontWeight: 'bold'  }}>
                 {props.title}
