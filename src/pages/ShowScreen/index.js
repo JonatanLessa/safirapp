@@ -9,8 +9,8 @@ import {
 import { getDatabase, ref, onValue } from 'firebase/database';
 
 import styles from '../../styles/styleShowScreen';
-import ButtonDataPicker from '../../Components/ButtonDataPicker';
-import ButtonRegisterSearch from '../../Components/ButtonRegisterSeach';
+import ButtonDataPicker from '../../components/ButtonDataPicker';
+import ButtonRegisterSearch from '../../components/ButtonRegisterSeach';
 import AuthContext from '../../context/AuthContext';
 
 export default function ShowScreen() {
