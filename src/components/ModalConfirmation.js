@@ -1,8 +1,6 @@
 import React from "react";
 import { Text, View, Button, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import btn from '../styles/button'
-// import Entry from '../../../assets/entry.png'
-// import Exit from '../../../assets/exit.png'
 
 export default function ModalConfirmation(props) {
     const { visible, setVisible, onConfirm } = props
@@ -33,7 +31,7 @@ export default function ModalConfirmation(props) {
                 </View>
             </Modal>
             <TouchableOpacity
-                style={btn.buttonRegistryEntry}
+                style={btn.buttonRegistry}
                 onPress={props.onPress} >
                 <Text style={{ marginLeft: 10, marginTop: 10, fontSize: 15, fontWeight: 'bold', color: '#fff' }}>
                     {props.title}
