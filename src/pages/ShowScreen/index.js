@@ -139,7 +139,7 @@ export default function ShowScreen() {
       </View>
       <View style={styles.viewReport2}>
         <FlatList
-          data={dataExit}
+          data={dataPause}
           renderItem={(obj) => {
             if (obj.item.data == date) {
               return (
@@ -154,7 +154,7 @@ export default function ShowScreen() {
       </View>
       <View style={styles.viewReport3}>
         <FlatList
-          data={dataEntry}
+          data={dataReturn}
           renderItem={(obj) => {
             if (obj.item.data == date) {
               return (
