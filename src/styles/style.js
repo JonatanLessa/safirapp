@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   registryContainer: {
-    marginTop: 30,
+    marginTop: 20,
+    marginVertical: -20,
     flexDirection: 'row',
     backgroundColor: '#fff',
     alignItems: 'center',
