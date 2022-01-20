@@ -86,12 +86,12 @@ export default function ShowScreen() {
       setDataReturn(returnArray);
       setDataExit(exitArray);
 
-      alerta(entryArray.length, exitArray.length);
+      alerta(entryArray.length, pauseArray.length, returnArray.length, exitArray.length);
     })
   }
   //Alerta em caso de não registro na data
-  const alerta = (entryArray, exitArray) => {
-    if ((entryArray == 0) && (exitArray == 0)) {
+  const alerta = (entryArray, pauseArray, returnArray, exitArray) => {
+    if ((entryArray == 0) && (pauseArray == 0) && (returnArray == 0) && (exitArray == 0)) {
       Alert.alert("NÃO HÁ REGISTRO NESSA DATA!")
     }
   }
